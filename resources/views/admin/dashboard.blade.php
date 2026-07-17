@@ -40,6 +40,21 @@
             <strong>Leadership records</strong>
             <small>{{ $activeLeadershipCount }} active messages are visible publicly.</small>
         </article>
+        <article>
+            <span>{{ $programCount }}</span>
+            <strong>Academic programs</strong>
+            <small>{{ $activeProgramCount }} active programs are visible on the homepage.</small>
+        </article>
+        <article>
+            <span>{{ $statCount }}</span>
+            <strong>Stats counters</strong>
+            <small>{{ $activeStatCount }} active counters animate on the homepage.</small>
+        </article>
+        <article>
+            <span>{{ $studentVoiceCount }}</span>
+            <strong>Student voices</strong>
+            <small>{{ $activeStudentVoiceCount }} active testimonials appear in the slider.</small>
+        </article>
     </section>
 
     <section class="admin-module-grid">
@@ -67,6 +82,21 @@
             <span>Ready</span>
             <h3>News & Announcements</h3>
             <p>Homepage news cards and public stories are editable from admin.</p>
+        </article>
+        <article>
+            <span>Ready</span>
+            <h3>Academic Programs</h3>
+            <p>Homepage academic area cards now come from MySQL.</p>
+        </article>
+        <article>
+            <span>Ready</span>
+            <h3>Stats Counters</h3>
+            <p>Homepage animated numbers are editable from admin.</p>
+        </article>
+        <article>
+            <span>Ready</span>
+            <h3>Student Voices</h3>
+            <p>Homepage testimonial slider now comes from MySQL.</p>
         </article>
     </section>
 @endsection

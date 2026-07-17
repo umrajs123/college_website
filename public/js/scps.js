@@ -292,6 +292,7 @@ const countObserver = new IntersectionObserver((entries) => {
         if (!entry.isIntersecting) return;
         const number = entry.target;
         const target = Number(number.dataset.count || 0);
+        const prefix = number.dataset.countPrefix || '';
         const suffix = number.dataset.countSuffix || '';
         const duration = 1300;
         const start = performance.now();
@@ -299,7 +300,7 @@ const countObserver = new IntersectionObserver((entries) => {
         const tick = (now) => {
             const progress = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            number.textContent = `${Math.round(target * eased).toLocaleString()}${suffix}`;
+            number.textContent = `${prefix}${Math.round(target * eased).toLocaleString()}${suffix}`;
             if (progress < 1) requestAnimationFrame(tick);
         };
 
@@ -309,8 +310,9 @@ const countObserver = new IntersectionObserver((entries) => {
 }, { threshold: .45 });
 
 document.querySelectorAll('[data-count]').forEach((number) => {
+    const prefix = number.dataset.countPrefix || '';
     const suffix = number.dataset.countSuffix || '';
-    number.textContent = `0${suffix}`;
+    number.textContent = `${prefix}0${suffix}`;
     countObserver.observe(number);
 });
 

@@ -4,7 +4,7 @@
     $isNews = request()->routeIs('news.*');
     $isFaculty = request()->routeIs('faculty.*');
     $isEvents = request()->routeIs('events.*');
-    $isPrograms = $isFaculty || $isEvents;
+    $isPrograms = request()->routeIs('programs.*') || $isFaculty || $isEvents;
 @endphp
 
 <div class="preloader" aria-hidden="true">

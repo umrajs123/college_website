@@ -45,6 +45,18 @@
                 <span>06</span>
                 News
             </a>
+            <a class="{{ request()->routeIs('admin.programs.*') ? 'active' : '' }}" href="{{ route('admin.programs.index') }}">
+                <span>07</span>
+                Programs
+            </a>
+            <a class="{{ request()->routeIs('admin.stats.*') ? 'active' : '' }}" href="{{ route('admin.stats.index') }}">
+                <span>08</span>
+                Stats
+            </a>
+            <a class="{{ request()->routeIs('admin.student-voices.*') ? 'active' : '' }}" href="{{ route('admin.student-voices.index') }}">
+                <span>09</span>
+                Student Voices
+            </a>
         </nav>
     </aside>
 

@@ -340,7 +340,10 @@ select {
 .hero-admin-list article,
 .faculty-admin-list article,
 .event-admin-list article,
-.news-admin-list article {
+.news-admin-list article,
+.program-admin-list article,
+.stats-admin-list article,
+.student-voice-admin-list article {
     display: grid;
     grid-template-columns: 82px 1fr auto;
     gap: 18px;
@@ -357,6 +360,21 @@ select {
 }
 
 .news-admin-list {
+    display: grid;
+    gap: 14px;
+}
+
+.program-admin-list {
+    display: grid;
+    gap: 14px;
+}
+
+.stats-admin-list {
+    display: grid;
+    gap: 14px;
+}
+
+.student-voice-admin-list {
     display: grid;
     gap: 14px;
 }
@@ -395,7 +413,8 @@ select {
 .leadership-admin-list img,
 .hero-admin-list img,
 .faculty-admin-list img,
-.news-admin-list img {
+.news-admin-list img,
+.student-voice-admin-list img {
     width: 82px;
     height: 82px;
     border: 4px solid #ffffff;
@@ -426,6 +445,45 @@ select {
     grid-template-columns: 132px 1fr auto;
 }
 
+.student-voice-admin-list article {
+    grid-template-columns: 92px 1fr auto;
+    background:
+        radial-gradient(circle at 8% 18%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(135deg, #ffffff, #f8fbff);
+}
+
+.program-admin-list article {
+    grid-template-columns: 86px 1fr auto;
+    background:
+        radial-gradient(circle at 8% 18%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(135deg, #ffffff, #f8fbff);
+}
+
+.stats-admin-list article {
+    grid-template-columns: 86px 1fr auto;
+    background:
+        radial-gradient(circle at 8% 18%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(135deg, #ffffff, #f8fbff);
+}
+
+.program-admin-icon,
+.program-preview-icon,
+.stats-admin-icon,
+.stats-preview-icon {
+    display: grid;
+    width: 82px;
+    height: 82px;
+    place-items: center;
+    border: 5px solid #ffffff;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--event-accent), var(--event-accent-hover));
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 950;
+    letter-spacing: .02em;
+    box-shadow: 0 16px 34px var(--event-accent-shadow);
+}
+
 .hero-admin-list img {
     width: 160px;
     border-radius: 16px;
@@ -440,7 +498,10 @@ select {
 .hero-admin-list h3,
 .faculty-admin-list h3,
 .event-admin-list h3,
-.news-admin-list h3 {
+.news-admin-list h3,
+.program-admin-list h3,
+.stats-admin-list h3,
+.student-voice-admin-list h3 {
     margin: 8px 0 6px;
     font-size: 20px;
     font-weight: 900;
@@ -450,7 +511,10 @@ select {
 .hero-admin-list p,
 .faculty-admin-list p,
 .event-admin-list p,
-.news-admin-list p {
+.news-admin-list p,
+.program-admin-list p,
+.stats-admin-list p,
+.student-voice-admin-list p {
     margin: 0;
     color: #64748b;
     line-height: 1.65;
@@ -461,7 +525,10 @@ select {
 .faculty-admin-list small,
 .event-admin-list small,
 .event-preview-card small,
-.news-admin-list small {
+.news-admin-list small,
+.program-admin-list small,
+.stats-admin-list small,
+.student-voice-admin-list small {
     display: block;
     margin-top: 8px;
     color: #0f766e;
@@ -565,6 +632,70 @@ select {
     padding: 0 18px;
     font-size: 13px;
     font-weight: 900;
+}
+
+.campus-event-accent {
+    --event-accent: #1da1f2;
+    --event-accent-hover: #38bdf8;
+    --event-accent-soft: #e0f2fe;
+    --event-accent-border: #bae6fd;
+    --event-accent-text: #0369a1;
+    --event-accent-shadow: rgba(29, 161, 242, .16);
+}
+
+.campus-event-accent--teal {
+    --event-accent: #14b8a6;
+    --event-accent-hover: #2dd4bf;
+    --event-accent-soft: #ccfbf1;
+    --event-accent-border: #99f6e4;
+    --event-accent-text: #0f766e;
+    --event-accent-shadow: rgba(20, 184, 166, .16);
+}
+
+.campus-event-accent--indigo {
+    --event-accent: #6366f1;
+    --event-accent-hover: #818cf8;
+    --event-accent-soft: #e0e7ff;
+    --event-accent-border: #c7d2fe;
+    --event-accent-text: #4338ca;
+    --event-accent-shadow: rgba(99, 102, 241, .16);
+}
+
+.campus-event-accent--cyan {
+    --event-accent: #06b6d4;
+    --event-accent-hover: #22d3ee;
+    --event-accent-soft: #cffafe;
+    --event-accent-border: #a5f3fc;
+    --event-accent-text: #0e7490;
+    --event-accent-shadow: rgba(6, 182, 212, .16);
+}
+
+.campus-event-accent--rose,
+.campus-event-accent--peach {
+    --event-accent: #f43f5e;
+    --event-accent-hover: #fb7185;
+    --event-accent-soft: #ffe4e6;
+    --event-accent-border: #fecdd3;
+    --event-accent-text: #be123c;
+    --event-accent-shadow: rgba(244, 63, 94, .16);
+}
+
+.campus-event-accent--pink {
+    --event-accent: #ec4899;
+    --event-accent-hover: #f472b6;
+    --event-accent-soft: #fce7f3;
+    --event-accent-border: #fbcfe8;
+    --event-accent-text: #be185d;
+    --event-accent-shadow: rgba(236, 72, 153, .16);
+}
+
+.campus-event-accent--lavender {
+    --event-accent: #a855f7;
+    --event-accent-hover: #c084fc;
+    --event-accent-soft: #f3e8ff;
+    --event-accent-border: #e9d5ff;
+    --event-accent-text: #7e22ce;
+    --event-accent-shadow: rgba(168, 85, 247, .16);
 }
 
 .status-pill {
@@ -678,6 +809,70 @@ select {
     height: 190px;
     border-radius: 18px;
     outline: 0;
+}
+
+.program-preview-card {
+    background:
+        radial-gradient(circle at 18% 14%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(145deg, #ffffff, #f8fbff);
+}
+
+.stats-preview-card {
+    background:
+        radial-gradient(circle at 18% 14%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(145deg, #ffffff, #f8fbff);
+}
+
+.student-voice-preview-card {
+    background:
+        radial-gradient(circle at 18% 14%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(145deg, #ffffff, #f8fbff);
+}
+
+.program-preview-card h3 {
+    color: #0f172a;
+    font-size: 26px;
+    font-weight: 950;
+}
+
+.stats-preview-card h3 {
+    color: #0f172a;
+    font-size: 42px;
+    font-weight: 950;
+    line-height: 1;
+}
+
+.student-voice-preview-card small {
+    display: block;
+    margin-top: 14px;
+    color: var(--event-accent-text);
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.program-preview-card p,
+.stats-preview-card p,
+.student-voice-preview-card p {
+    color: #64748b;
+    font-weight: 700;
+    line-height: 1.7;
+}
+
+.admin-nested-fields {
+    display: grid;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+    background: #f8fbff;
+}
+
+.admin-mini-grid {
+    display: grid;
+    grid-template-columns: minmax(0, .72fr) minmax(0, 1fr);
+    gap: 12px;
 }
 
 .admin-empty-preview {
@@ -871,7 +1066,11 @@ select {
     .hero-admin-list article,
     .faculty-admin-list article,
     .event-admin-list article,
-    .news-admin-list article {
+    .news-admin-list article,
+    .program-admin-list article,
+    .stats-admin-list article,
+    .student-voice-admin-list article,
+    .admin-mini-grid {
         grid-template-columns: 1fr;
     }
 

@@ -136,38 +136,22 @@
                     <h2 class="mb-0 text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">Focused Pathways in Pharmaceutical Sciences</h2>
                 </div>
                 <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-                    <article class="reveal group relative min-h-[255px] overflow-hidden rounded-lg border border-slate-200/80 bg-white/95 p-6 shadow-[0_14px_34px_rgba(8,35,68,0.08)] transition duration-300 hover:-translate-y-2 hover:border-sky-300 hover:shadow-[0_24px_52px_rgba(8,35,68,0.14)]">
-                        <div class="absolute inset-0 bg-gradient-to-br from-sky-100/80 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
-                        <div class="absolute -bottom-12 -right-12 h-32 w-32 rounded-full border-[18px] border-sky-200/50 transition duration-300 group-hover:scale-110"></div>
-                        <span class="relative z-10 mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-[#0b4da2] to-[#1da1f2] text-sm font-black text-white shadow-[0_14px_28px_rgba(29,161,242,0.28)] transition duration-300 group-hover:-translate-y-1 group-hover:-rotate-3">Rx</span>
-                        <h3 class="relative z-10 mb-3 text-xl font-extrabold leading-tight text-slate-950">Doctor of Pharmacy</h3>
-                        <p class="relative z-10 mb-5 text-sm leading-7 text-slate-600">Core pharmaceutical education with clinical and community practice foundations.</p>
-                        <a href="#" class="relative z-10 inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide text-sky-500">Read More <span class="transition group-hover:translate-x-1">→</span></a>
-                    </article>
-                    <article class="reveal group relative min-h-[255px] overflow-hidden rounded-lg border border-slate-200/80 bg-white/95 p-6 shadow-[0_14px_34px_rgba(8,35,68,0.08)] transition duration-300 hover:-translate-y-2 hover:border-teal-300 hover:shadow-[0_24px_52px_rgba(8,35,68,0.14)]">
-                        <div class="absolute inset-0 bg-gradient-to-br from-teal-100/80 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
-                        <div class="absolute -bottom-12 -right-12 h-32 w-32 rounded-full border-[18px] border-teal-200/50 transition duration-300 group-hover:scale-110"></div>
-                        <span class="relative z-10 mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-teal-700 to-teal-400 text-lg font-black text-white shadow-[0_14px_28px_rgba(20,184,166,0.25)] transition duration-300 group-hover:-translate-y-1 group-hover:-rotate-3">μ</span>
-                        <h3 class="relative z-10 mb-3 text-xl font-extrabold leading-tight text-slate-950">Pharmaceutics</h3>
-                        <p class="relative z-10 mb-5 text-sm leading-7 text-slate-600">Dosage forms, formulation principles, quality assurance, and industrial practice.</p>
-                        <a href="#" class="relative z-10 inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide text-teal-600">Read More <span class="transition group-hover:translate-x-1">→</span></a>
-                    </article>
-                    <article class="reveal group relative min-h-[255px] overflow-hidden rounded-lg border border-slate-200/80 bg-white/95 p-6 shadow-[0_14px_34px_rgba(8,35,68,0.08)] transition duration-300 hover:-translate-y-2 hover:border-indigo-300 hover:shadow-[0_24px_52px_rgba(8,35,68,0.14)]">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-100/80 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
-                        <div class="absolute -bottom-12 -right-12 h-32 w-32 rounded-full border-[18px] border-indigo-200/50 transition duration-300 group-hover:scale-110"></div>
-                        <span class="relative z-10 mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-indigo-700 to-[#1da1f2] text-lg font-black text-white shadow-[0_14px_28px_rgba(79,70,229,0.25)] transition duration-300 group-hover:-translate-y-1 group-hover:-rotate-3">⚕</span>
-                        <h3 class="relative z-10 mb-3 text-xl font-extrabold leading-tight text-slate-950">Clinical Pharmacy</h3>
-                        <p class="relative z-10 mb-5 text-sm leading-7 text-slate-600">Patient-centered medication use, safety, counseling, and therapeutic decision-making.</p>
-                        <a href="#" class="relative z-10 inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide text-indigo-600">Read More <span class="transition group-hover:translate-x-1">→</span></a>
-                    </article>
-                    <article class="reveal group relative min-h-[255px] overflow-hidden rounded-lg border border-slate-200/80 bg-white/95 p-6 shadow-[0_14px_34px_rgba(8,35,68,0.08)] transition duration-300 hover:-translate-y-2 hover:border-cyan-300 hover:shadow-[0_24px_52px_rgba(8,35,68,0.14)]">
-                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-100/80 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"></div>
-                        <div class="absolute -bottom-12 -right-12 h-32 w-32 rounded-full border-[18px] border-cyan-200/50 transition duration-300 group-hover:scale-110"></div>
-                        <span class="relative z-10 mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-cyan-700 to-sky-400 text-xs font-black text-white shadow-[0_14px_28px_rgba(6,182,212,0.25)] transition duration-300 group-hover:-translate-y-1 group-hover:-rotate-3">DNA</span>
-                        <h3 class="relative z-10 mb-3 text-xl font-extrabold leading-tight text-slate-950">Pharmacology</h3>
-                        <p class="relative z-10 mb-5 text-sm leading-7 text-slate-600">Drug action, toxicity, therapeutic response, and evidence-based medicine.</p>
-                        <a href="#" class="relative z-10 inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide text-cyan-600">Read More <span class="transition group-hover:translate-x-1">→</span></a>
-                    </article>
+                    @forelse($academicPrograms ?? collect() as $program)
+                        <article class="program-card-dynamic campus-event-accent campus-event-accent--{{ $program->accent ?: 'sky' }} reveal group">
+                            <div class="program-card-dynamic__wash"></div>
+                            <div class="program-card-dynamic__ring"></div>
+                            <span class="program-card-dynamic__icon">{{ $program->icon_label }}</span>
+                            <h3>{{ $program->title }}</h3>
+                            <p>{{ $program->description ?: 'Program details will be updated soon from the admin panel.' }}</p>
+                            <a href="{{ $program->publicUrl() }}">Read More <span>&rarr;</span></a>
+                        </article>
+                    @empty
+                        <div class="programs-empty reveal sm:col-span-2 xl:col-span-4">
+                            <span>Programs Pending</span>
+                            <h3>No academic programs are available right now.</h3>
+                            <p>Academic areas will appear here after they are published from the admin panel.</p>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -218,22 +202,24 @@
         <section id="stats" class="relative overflow-hidden bg-[#062b4f] py-10 text-white sm:py-12">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_30%,rgba(29,161,242,0.32),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(45,212,191,0.18),transparent_30%)]"></div>
             <div class="container relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="reveal rounded-lg border border-white/10 bg-white/[0.08] px-6 py-6 text-center shadow-[0_18px_45px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-sky-300/60 hover:bg-white/[0.12]">
-                    <strong class="block text-4xl font-black leading-none text-white sm:text-5xl" data-count="1200" data-count-suffix="+">0</strong>
-                    <span class="mt-3 block text-xs font-black uppercase tracking-[0.18em] text-sky-100/85">Students Trained</span>
-                </div>
-                <div class="reveal rounded-lg border border-white/10 bg-white/[0.08] px-6 py-6 text-center shadow-[0_18px_45px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-teal-300/60 hover:bg-white/[0.12]">
-                    <strong class="block text-4xl font-black leading-none text-white sm:text-5xl" data-count="42" data-count-suffix="+">0</strong>
-                    <span class="mt-3 block text-xs font-black uppercase tracking-[0.18em] text-sky-100/85">Faculty &amp; Staff</span>
-                </div>
-                <div class="reveal rounded-lg border border-white/10 bg-white/[0.08] px-6 py-6 text-center shadow-[0_18px_45px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-indigo-300/60 hover:bg-white/[0.12]">
-                    <strong class="block text-4xl font-black leading-none text-white sm:text-5xl" data-count="9">0</strong>
-                    <span class="mt-3 block text-xs font-black uppercase tracking-[0.18em] text-sky-100/85">Teaching Labs</span>
-                </div>
-                <div class="reveal rounded-lg border border-white/10 bg-white/[0.08] px-6 py-6 text-center shadow-[0_18px_45px_rgba(0,0,0,0.16)] backdrop-blur transition hover:-translate-y-1 hover:border-cyan-300/60 hover:bg-white/[0.12]">
-                    <strong class="block text-4xl font-black leading-none text-white sm:text-5xl" data-count="18" data-count-suffix="+">0</strong>
-                    <span class="mt-3 block text-xs font-black uppercase tracking-[0.18em] text-sky-100/85">Academic Partners</span>
-                </div>
+                @forelse($statCounters ?? collect() as $stat)
+                    <div class="homepage-stat-card campus-event-accent campus-event-accent--{{ $stat->accent ?: 'sky' }} reveal">
+                        @if($stat->icon_label)
+                            <span class="homepage-stat-card__icon">{{ $stat->icon_label }}</span>
+                        @endif
+                        <strong data-count="{{ $stat->value }}" data-count-prefix="{{ $stat->prefix }}" data-count-suffix="{{ $stat->suffix }}">0</strong>
+                        <span>{{ $stat->label }}</span>
+                        @if($stat->description)
+                            <small>{{ $stat->description }}</small>
+                        @endif
+                    </div>
+                @empty
+                    <div class="stats-empty reveal sm:col-span-2 lg:col-span-4">
+                        <span>Stats Pending</span>
+                        <h3>No homepage counters are available right now.</h3>
+                        <p>Animated stats will appear here after they are added and published from the admin panel.</p>
+                    </div>
+                @endforelse
             </div>
         </section>
 
@@ -425,108 +411,64 @@
                         </span>
                         <h2 class="max-w-3xl text-2xl font-extrabold leading-tight text-slate-950 sm:text-3xl lg:text-4xl">Stories From Our Pharmacy Students</h2>
                     </div>
-                    <div class="flex gap-3">
-                        <button class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-2xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white" type="button" data-testimonial-prev aria-label="Previous student voice">&lsaquo;</button>
-                        <button class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-2xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white" type="button" data-testimonial-next aria-label="Next student voice">&rsaquo;</button>
-                    </div>
+                    @if(($studentVoices ?? collect())->count() > 1)
+                        <div class="flex gap-3">
+                            <button class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-2xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white" type="button" data-testimonial-prev aria-label="Previous student voice">&lsaquo;</button>
+                            <button class="grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-2xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white" type="button" data-testimonial-next aria-label="Next student voice">&rsaquo;</button>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="reveal relative rounded-2xl border border-white/15 bg-[#062b4f] p-5 text-white shadow-[0_24px_64px_rgba(8,35,68,0.22)] sm:p-6" data-testimonial-stage>
-                    <article class="grid items-center gap-6 transition duration-500 ease-out opacity-100 translate-x-0 lg:grid-cols-[220px_1fr]" data-testimonial-slide>
-                        <div class="relative mx-auto w-full max-w-[190px]">
-                            <div class="absolute -left-4 -top-4 h-20 w-20 rounded-full bg-sky-400/20 blur-2xl"></div>
-                            <img class="relative aspect-square w-full rounded-xl object-cover shadow-[0_18px_38px_rgba(0,0,0,0.24)]" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=85" alt="Student portrait">
-                            <div class="mt-4 text-center">
-                                <strong class="block text-lg font-black text-white">Ayesha Karim</strong>
-                                <span class="mt-1 block text-xs font-black uppercase tracking-[0.18em] text-sky-200">Final Year Student</span>
+                    @forelse($studentVoices ?? collect() as $voice)
+                        <article class="{{ $loop->first ? '' : 'absolute inset-0 pointer-events-none opacity-0 translate-x-6 ' }}student-voice-slide campus-event-accent campus-event-accent--{{ $voice->accent ?: 'sky' }} grid items-center gap-6 transition duration-500 ease-out {{ $loop->first ? 'opacity-100 translate-x-0' : '' }} lg:grid-cols-[220px_1fr]" data-testimonial-slide>
+                            <div class="relative mx-auto w-full max-w-[190px]">
+                                <div class="student-voice-slide__glow"></div>
+                                <img class="relative aspect-square w-full rounded-xl object-cover shadow-[0_18px_38px_rgba(0,0,0,0.24)]" src="{{ $voice->imageUrl() }}" alt="{{ $voice->image_alt ?: $voice->name }}">
+                                <div class="mt-4 text-center">
+                                    <strong class="block text-lg font-black text-white">{{ $voice->name }}</strong>
+                                    @if($voice->program)
+                                        <span class="student-voice-slide__program">{{ $voice->program }}</span>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <blockquote class="relative max-w-4xl text-xl font-extrabold leading-snug text-white sm:text-2xl lg:text-3xl">
-                                <span class="absolute -left-2 -top-6 text-5xl font-black leading-none text-sky-300/30 sm:-left-5">&ldquo;</span>
-                                SCPS gives pharmacy students a serious academic environment and practical exposure. The laboratory work makes the science feel real, not just theoretical.
-                            </blockquote>
-                            <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Practical</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">lab exposure</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Focused</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">academic culture</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Guided</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">student support</span></div>
+                            <div>
+                                <blockquote class="student-voice-slide__quote relative max-w-4xl text-xl font-extrabold leading-snug text-white sm:text-2xl lg:text-3xl">
+                                    <span>&ldquo;</span>
+                                    {{ $voice->quote }}
+                                </blockquote>
+                                @if(! empty($voice->highlights))
+                                    <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                                        @foreach($voice->highlights as $highlight)
+                                            <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur">
+                                                @if(! empty($highlight['title']))
+                                                    <strong class="block text-lg font-black text-white">{{ $highlight['title'] }}</strong>
+                                                @endif
+                                                @if(! empty($highlight['text']))
+                                                    <span class="mt-1 block text-xs font-medium text-sky-100/80">{{ $highlight['text'] }}</span>
+                                                @endif
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
+                        </article>
+                    @empty
+                        <div class="student-voices-empty">
+                            <span>Student Voice</span>
+                            <h3>No student voices are available right now.</h3>
+                            <p>Testimonials will appear here after they are added and published from the admin panel.</p>
                         </div>
-                    </article>
-
-                    <article class="absolute inset-0 grid items-center gap-6 transition duration-500 ease-out opacity-0 translate-x-6 pointer-events-none lg:grid-cols-[220px_1fr]" data-testimonial-slide>
-                        <div class="relative mx-auto w-full max-w-[190px]">
-                            <div class="absolute -left-4 -top-4 h-20 w-20 rounded-full bg-teal-400/20 blur-2xl"></div>
-                            <img class="relative aspect-square w-full rounded-xl object-cover shadow-[0_18px_38px_rgba(0,0,0,0.24)]" src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=85" alt="Student portrait">
-                            <div class="mt-4 text-center">
-                                <strong class="block text-lg font-black text-white">Hamza Ali</strong>
-                                <span class="mt-1 block text-xs font-black uppercase tracking-[0.18em] text-teal-200">Pharmaceutics Student</span>
-                            </div>
-                        </div>
-                        <div>
-                            <blockquote class="relative max-w-4xl text-xl font-extrabold leading-snug text-white sm:text-2xl lg:text-3xl">
-                                <span class="absolute -left-2 -top-6 text-5xl font-black leading-none text-teal-300/30 sm:-left-5">&ldquo;</span>
-                                The faculty explain difficult pharmacy concepts with patience, and the practical sessions help me connect formulation work with real healthcare needs.
-                            </blockquote>
-                            <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Clear</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">teaching style</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Hands-on</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">formulation work</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Relevant</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">healthcare focus</span></div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="absolute inset-0 grid items-center gap-6 transition duration-500 ease-out opacity-0 translate-x-6 pointer-events-none lg:grid-cols-[220px_1fr]" data-testimonial-slide>
-                        <div class="relative mx-auto w-full max-w-[190px]">
-                            <div class="absolute -left-4 -top-4 h-20 w-20 rounded-full bg-indigo-400/20 blur-2xl"></div>
-                            <img class="relative aspect-square w-full rounded-xl object-cover shadow-[0_18px_38px_rgba(0,0,0,0.24)]" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=85" alt="Student portrait">
-                            <div class="mt-4 text-center">
-                                <strong class="block text-lg font-black text-white">Maha Noor</strong>
-                                <span class="mt-1 block text-xs font-black uppercase tracking-[0.18em] text-indigo-200">Clinical Pharmacy Student</span>
-                            </div>
-                        </div>
-                        <div>
-                            <blockquote class="relative max-w-4xl text-xl font-extrabold leading-snug text-white sm:text-2xl lg:text-3xl">
-                                <span class="absolute -left-2 -top-6 text-5xl font-black leading-none text-indigo-300/30 sm:-left-5">&ldquo;</span>
-                                I like how the college keeps discipline and mentoring together. It feels structured, but there is always guidance when you need support.
-                            </blockquote>
-                            <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Mentored</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">academic path</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Organized</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">study rhythm</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Supportive</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">faculty access</span></div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="absolute inset-0 grid items-center gap-6 transition duration-500 ease-out opacity-0 translate-x-6 pointer-events-none lg:grid-cols-[220px_1fr]" data-testimonial-slide>
-                        <div class="relative mx-auto w-full max-w-[190px]">
-                            <div class="absolute -left-4 -top-4 h-20 w-20 rounded-full bg-cyan-400/20 blur-2xl"></div>
-                            <img class="relative aspect-square w-full rounded-xl object-cover shadow-[0_18px_38px_rgba(0,0,0,0.24)]" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85" alt="Student portrait">
-                            <div class="mt-4 text-center">
-                                <strong class="block text-lg font-black text-white">Bilal Khan</strong>
-                                <span class="mt-1 block text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Pharmacology Student</span>
-                            </div>
-                        </div>
-                        <div>
-                            <blockquote class="relative max-w-4xl text-xl font-extrabold leading-snug text-white sm:text-2xl lg:text-3xl">
-                                <span class="absolute -left-2 -top-6 text-5xl font-black leading-none text-cyan-300/30 sm:-left-5">&ldquo;</span>
-                                The learning environment pushes us to be professional. Seminars, labs, and regular feedback make the pharmacy journey feel purposeful.
-                            </blockquote>
-                            <div class="mt-5 grid gap-3 sm:grid-cols-3">
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Professional</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">learning habits</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Active</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">campus events</span></div>
-                                <div class="rounded-lg border border-white/10 bg-white/[0.08] p-3 backdrop-blur"><strong class="block text-lg font-black text-white">Purposeful</strong><span class="mt-1 block text-xs font-medium text-sky-100/80">career direction</span></div>
-                            </div>
-                        </div>
-                    </article>
+                    @endforelse
                 </div>
 
-                <div class="mt-6 flex justify-center gap-3" aria-label="Student voice slides">
-                    <button class="h-2.5 w-8 rounded-full bg-sky-400 transition" type="button" data-testimonial-dot aria-label="Show student voice 1" aria-selected="true"></button>
-                    <button class="h-2.5 w-2.5 rounded-full bg-slate-300 transition hover:bg-sky-300" type="button" data-testimonial-dot aria-label="Show student voice 2" aria-selected="false"></button>
-                    <button class="h-2.5 w-2.5 rounded-full bg-slate-300 transition hover:bg-sky-300" type="button" data-testimonial-dot aria-label="Show student voice 3" aria-selected="false"></button>
-                    <button class="h-2.5 w-2.5 rounded-full bg-slate-300 transition hover:bg-sky-300" type="button" data-testimonial-dot aria-label="Show student voice 4" aria-selected="false"></button>
-                </div>
+                @if(($studentVoices ?? collect())->count() > 1)
+                    <div class="mt-6 flex justify-center gap-3" aria-label="Student voice slides">
+                        @foreach($studentVoices as $voice)
+                            <button class="h-2.5 {{ $loop->first ? 'w-8 bg-sky-400' : 'w-2.5 bg-slate-300 hover:bg-sky-300' }} rounded-full transition" type="button" data-testimonial-dot aria-label="Show student voice {{ $loop->iteration }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}"></button>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </section>
 

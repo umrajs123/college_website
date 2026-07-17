@@ -1,17 +1,23 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AcademicProgramController;
 use App\Http\Controllers\Admin\CampusEventController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FacultyMemberController;
 use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\LeadershipMessageController;
 use App\Http\Controllers\Admin\NewsPostController;
+use App\Http\Controllers\Admin\StatCounterController;
+use App\Http\Controllers\Admin\StudentVoiceController;
+use App\Models\AcademicProgram;
 use App\Models\CampusEvent;
 use App\Models\FacultyMember;
 use App\Models\HeroSlide;
 use App\Models\LeadershipMessage;
 use App\Models\NewsPost;
+use App\Models\StatCounter;
+use App\Models\StudentVoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
@@ -46,6 +52,15 @@ Route::get('/', function () {
         'newsPosts' => Schema::hasTable('news_posts')
             ? NewsPost::active()->orderByDesc('published_at')->orderBy('sort_order')->limit(3)->get()
             : collect(),
+        'academicPrograms' => Schema::hasTable('academic_programs')
+            ? AcademicProgram::active()->orderBy('sort_order')->orderBy('title')->get()
+            : collect(),
+        'statCounters' => Schema::hasTable('stat_counters')
+            ? StatCounter::active()->orderBy('sort_order')->orderBy('label')->get()
+            : collect(),
+        'studentVoices' => Schema::hasTable('student_voices')
+            ? StudentVoice::active()->orderBy('sort_order')->orderBy('name')->get()
+            : collect(),
     ]);
 });
 
@@ -78,6 +93,24 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/news/{post}/edit', [NewsPostController::class, 'edit'])->name('news.edit');
     Route::put('/news/{post}', [NewsPostController::class, 'update'])->name('news.update');
     Route::delete('/news/{post}', [NewsPostController::class, 'destroy'])->name('news.destroy');
+    Route::get('/programs', [AcademicProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/create', [AcademicProgramController::class, 'create'])->name('programs.create');
+    Route::post('/programs', [AcademicProgramController::class, 'store'])->name('programs.store');
+    Route::get('/programs/{program}/edit', [AcademicProgramController::class, 'edit'])->name('programs.edit');
+    Route::put('/programs/{program}', [AcademicProgramController::class, 'update'])->name('programs.update');
+    Route::delete('/programs/{program}', [AcademicProgramController::class, 'destroy'])->name('programs.destroy');
+    Route::get('/stats', [StatCounterController::class, 'index'])->name('stats.index');
+    Route::get('/stats/create', [StatCounterController::class, 'create'])->name('stats.create');
+    Route::post('/stats', [StatCounterController::class, 'store'])->name('stats.store');
+    Route::get('/stats/{stat}/edit', [StatCounterController::class, 'edit'])->name('stats.edit');
+    Route::put('/stats/{stat}', [StatCounterController::class, 'update'])->name('stats.update');
+    Route::delete('/stats/{stat}', [StatCounterController::class, 'destroy'])->name('stats.destroy');
+    Route::get('/student-voices', [StudentVoiceController::class, 'index'])->name('student-voices.index');
+    Route::get('/student-voices/create', [StudentVoiceController::class, 'create'])->name('student-voices.create');
+    Route::post('/student-voices', [StudentVoiceController::class, 'store'])->name('student-voices.store');
+    Route::get('/student-voices/{voice}/edit', [StudentVoiceController::class, 'edit'])->name('student-voices.edit');
+    Route::put('/student-voices/{voice}', [StudentVoiceController::class, 'update'])->name('student-voices.update');
+    Route::delete('/student-voices/{voice}', [StudentVoiceController::class, 'destroy'])->name('student-voices.destroy');
     Route::get('/leadership', [LeadershipMessageController::class, 'index'])->name('leadership.index');
     Route::get('/leadership/create', [LeadershipMessageController::class, 'create'])->name('leadership.create');
     Route::post('/leadership', [LeadershipMessageController::class, 'store'])->name('leadership.store');
@@ -85,6 +118,20 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::put('/leadership/{leadershipMessage}', [LeadershipMessageController::class, 'update'])->name('leadership.update');
     Route::delete('/leadership/{leadershipMessage}', [LeadershipMessageController::class, 'destroy'])->name('leadership.destroy');
 });
+
+Route::get('/programs/{slug}', function (string $slug) {
+    $program = AcademicProgram::active()->where('slug', $slug)->firstOrFail();
+
+    return view('programs.show', [
+        'program' => $program,
+        'programs' => AcademicProgram::active()
+            ->whereKeyNot($program->id)
+            ->orderBy('sort_order')
+            ->orderBy('title')
+            ->limit(4)
+            ->get(),
+    ]);
+})->name('programs.show');
 
 Route::get('/events', function (Request $request) {
     $selectedCategory = trim((string) $request->input('category', ''));
