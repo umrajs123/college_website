@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutSection;
 use App\Models\AcademicProgram;
+use App\Models\AcademicFacility;
 use App\Models\CampusEvent;
 use App\Models\FacultyMember;
 use App\Models\HeroSlide;
@@ -34,6 +36,10 @@ class DashboardController extends Controller
             'activeStatCount' => StatCounter::active()->count(),
             'studentVoiceCount' => StudentVoice::count(),
             'activeStudentVoiceCount' => StudentVoice::active()->count(),
+            'facilityCount' => AcademicFacility::count(),
+            'activeFacilityCount' => AcademicFacility::active()->count(),
+            'aboutCount' => AboutSection::count(),
+            'activeAboutCount' => AboutSection::active()->count(),
         ]);
     }
 }

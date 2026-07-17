@@ -55,6 +55,16 @@
             <strong>Student voices</strong>
             <small>{{ $activeStudentVoiceCount }} active testimonials appear in the slider.</small>
         </article>
+        <article>
+            <span>{{ $facilityCount }}</span>
+            <strong>Facilities</strong>
+            <small>{{ $activeFacilityCount }} active facility cards appear in the carousel.</small>
+        </article>
+        <article>
+            <span>{{ $aboutCount }}</span>
+            <strong>About blocks</strong>
+            <small>{{ $activeAboutCount }} active About blocks are available for the homepage.</small>
+        </article>
     </section>
 
     <section class="admin-module-grid">
@@ -97,6 +107,16 @@
             <span>Ready</span>
             <h3>Student Voices</h3>
             <p>Homepage testimonial slider now comes from MySQL.</p>
+        </article>
+        <article>
+            <span>Ready</span>
+            <h3>Academic Facilities</h3>
+            <p>Homepage learning facilities carousel is editable from admin.</p>
+        </article>
+        <article>
+            <span>Ready</span>
+            <h3>About Section</h3>
+            <p>Homepage About content, image, badge, and bullets are editable.</p>
         </article>
     </section>
 @endsection

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AboutSectionController;
 use App\Http\Controllers\Admin\AcademicProgramController;
+use App\Http\Controllers\Admin\AcademicFacilityController;
 use App\Http\Controllers\Admin\CampusEventController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FacultyMemberController;
@@ -11,6 +13,8 @@ use App\Http\Controllers\Admin\NewsPostController;
 use App\Http\Controllers\Admin\StatCounterController;
 use App\Http\Controllers\Admin\StudentVoiceController;
 use App\Models\AcademicProgram;
+use App\Models\AcademicFacility;
+use App\Models\AboutSection;
 use App\Models\CampusEvent;
 use App\Models\FacultyMember;
 use App\Models\HeroSlide;
@@ -61,6 +65,12 @@ Route::get('/', function () {
         'studentVoices' => Schema::hasTable('student_voices')
             ? StudentVoice::active()->orderBy('sort_order')->orderBy('name')->get()
             : collect(),
+        'academicFacilities' => Schema::hasTable('academic_facilities')
+            ? AcademicFacility::active()->orderBy('sort_order')->orderBy('title')->get()
+            : collect(),
+        'aboutSection' => Schema::hasTable('about_sections')
+            ? AboutSection::active()->orderBy('sort_order')->orderBy('id')->first()
+            : null,
     ]);
 });
 
@@ -111,6 +121,18 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/student-voices/{voice}/edit', [StudentVoiceController::class, 'edit'])->name('student-voices.edit');
     Route::put('/student-voices/{voice}', [StudentVoiceController::class, 'update'])->name('student-voices.update');
     Route::delete('/student-voices/{voice}', [StudentVoiceController::class, 'destroy'])->name('student-voices.destroy');
+    Route::get('/facilities', [AcademicFacilityController::class, 'index'])->name('facilities.index');
+    Route::get('/facilities/create', [AcademicFacilityController::class, 'create'])->name('facilities.create');
+    Route::post('/facilities', [AcademicFacilityController::class, 'store'])->name('facilities.store');
+    Route::get('/facilities/{facility}/edit', [AcademicFacilityController::class, 'edit'])->name('facilities.edit');
+    Route::put('/facilities/{facility}', [AcademicFacilityController::class, 'update'])->name('facilities.update');
+    Route::delete('/facilities/{facility}', [AcademicFacilityController::class, 'destroy'])->name('facilities.destroy');
+    Route::get('/about', [AboutSectionController::class, 'index'])->name('about.index');
+    Route::get('/about/create', [AboutSectionController::class, 'create'])->name('about.create');
+    Route::post('/about', [AboutSectionController::class, 'store'])->name('about.store');
+    Route::get('/about/{section}/edit', [AboutSectionController::class, 'edit'])->name('about.edit');
+    Route::put('/about/{section}', [AboutSectionController::class, 'update'])->name('about.update');
+    Route::delete('/about/{section}', [AboutSectionController::class, 'destroy'])->name('about.destroy');
     Route::get('/leadership', [LeadershipMessageController::class, 'index'])->name('leadership.index');
     Route::get('/leadership/create', [LeadershipMessageController::class, 'create'])->name('leadership.create');
     Route::post('/leadership', [LeadershipMessageController::class, 'store'])->name('leadership.store');

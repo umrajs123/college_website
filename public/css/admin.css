@@ -35,9 +35,12 @@ select {
     position: sticky;
     top: 0;
     height: 100vh;
-    padding: 24px;
+    overflow-y: auto;
+    padding: 22px;
     background: linear-gradient(180deg, #062b4f 0%, #081d36 100%);
     color: #ffffff;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(125, 211, 252, .45) transparent;
 }
 
 .admin-brand {
@@ -79,26 +82,28 @@ select {
 
 .admin-nav {
     display: grid;
-    gap: 10px;
-    margin-top: 28px;
+    gap: 8px;
+    margin-top: 22px;
 }
 
 .admin-nav a {
     display: flex;
     align-items: center;
-    gap: 12px;
-    min-height: 48px;
-    padding: 0 14px;
-    border-radius: 14px;
+    gap: 10px;
+    min-height: 43px;
+    padding: 0 12px;
+    border-radius: 13px;
     color: rgba(255, 255, 255, .72);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 800;
+    line-height: 1.2;
     transition: .25s ease;
 }
 
 .admin-nav a span {
     display: grid;
-    width: 28px;
+    width: 30px;
+    min-width: 30px;
     height: 28px;
     place-items: center;
     border-radius: 10px;
@@ -106,6 +111,7 @@ select {
     color: #7dd3fc;
     font-size: 11px;
     font-weight: 900;
+    font-variant-numeric: tabular-nums;
 }
 
 .admin-nav a.active,
@@ -341,6 +347,8 @@ select {
 .faculty-admin-list article,
 .event-admin-list article,
 .news-admin-list article,
+.facility-admin-list article,
+.about-admin-list article,
 .program-admin-list article,
 .stats-admin-list article,
 .student-voice-admin-list article {
@@ -360,6 +368,16 @@ select {
 }
 
 .news-admin-list {
+    display: grid;
+    gap: 14px;
+}
+
+.facility-admin-list {
+    display: grid;
+    gap: 14px;
+}
+
+.about-admin-list {
     display: grid;
     gap: 14px;
 }
@@ -414,6 +432,8 @@ select {
 .hero-admin-list img,
 .faculty-admin-list img,
 .news-admin-list img,
+.facility-admin-list img,
+.about-admin-list img,
 .student-voice-admin-list img {
     width: 82px;
     height: 82px;
@@ -443,6 +463,20 @@ select {
 
 .news-admin-list article {
     grid-template-columns: 132px 1fr auto;
+}
+
+.facility-admin-list article {
+    grid-template-columns: 132px 1fr auto;
+    background:
+        radial-gradient(circle at 8% 18%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(135deg, #ffffff, #f8fbff);
+}
+
+.about-admin-list article {
+    grid-template-columns: 132px 1fr auto;
+    background:
+        radial-gradient(circle at 8% 18%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(135deg, #ffffff, #f8fbff);
 }
 
 .student-voice-admin-list article {
@@ -494,11 +528,23 @@ select {
     border-radius: 16px;
 }
 
+.facility-admin-list img {
+    width: 132px;
+    border-radius: 16px;
+}
+
+.about-admin-list img {
+    width: 132px;
+    border-radius: 16px;
+}
+
 .leadership-admin-list h3,
 .hero-admin-list h3,
 .faculty-admin-list h3,
 .event-admin-list h3,
 .news-admin-list h3,
+.facility-admin-list h3,
+.about-admin-list h3,
 .program-admin-list h3,
 .stats-admin-list h3,
 .student-voice-admin-list h3 {
@@ -512,6 +558,8 @@ select {
 .faculty-admin-list p,
 .event-admin-list p,
 .news-admin-list p,
+.facility-admin-list p,
+.about-admin-list p,
 .program-admin-list p,
 .stats-admin-list p,
 .student-voice-admin-list p {
@@ -526,6 +574,8 @@ select {
 .event-admin-list small,
 .event-preview-card small,
 .news-admin-list small,
+.facility-admin-list small,
+.about-admin-list small,
 .program-admin-list small,
 .stats-admin-list small,
 .student-voice-admin-list small {
@@ -811,6 +861,45 @@ select {
     outline: 0;
 }
 
+.facility-preview-card img {
+    width: 100%;
+    height: 190px;
+    border-radius: 18px;
+    object-fit: cover;
+    outline: 0;
+}
+
+.about-preview-card img {
+    width: 100%;
+    height: 190px;
+    border-radius: 18px;
+    object-fit: cover;
+    outline: 0;
+}
+
+.facility-preview-card {
+    background:
+        radial-gradient(circle at 18% 14%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(145deg, #ffffff, #f8fbff);
+}
+
+.about-preview-card {
+    background:
+        radial-gradient(circle at 18% 14%, var(--event-accent-soft), transparent 34%),
+        linear-gradient(145deg, #ffffff, #f8fbff);
+}
+
+.facility-preview-card small,
+.about-preview-card .admin-kicker {
+    display: block;
+    margin-top: 14px;
+    color: var(--event-accent-text);
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
 .program-preview-card {
     background:
         radial-gradient(circle at 18% 14%, var(--event-accent-soft), transparent 34%),
@@ -1067,6 +1156,8 @@ select {
     .faculty-admin-list article,
     .event-admin-list article,
     .news-admin-list article,
+    .facility-admin-list article,
+    .about-admin-list article,
     .program-admin-list article,
     .stats-admin-list article,
     .student-voice-admin-list article,

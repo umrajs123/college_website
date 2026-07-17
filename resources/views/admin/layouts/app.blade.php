@@ -57,6 +57,14 @@
                 <span>09</span>
                 Student Voices
             </a>
+            <a class="{{ request()->routeIs('admin.facilities.*') ? 'active' : '' }}" href="{{ route('admin.facilities.index') }}">
+                <span>10</span>
+                Facilities
+            </a>
+            <a class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}" href="{{ route('admin.about.index') }}">
+                <span>11</span>
+                About
+            </a>
         </nav>
     </aside>
 

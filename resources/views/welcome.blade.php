@@ -156,9 +156,64 @@
             </div>
         </section>
 
-        <section id="about" class="relative overflow-hidden bg-gradient-to-br from-white via-sky-50 to-teal-50/80 py-16 text-slate-950 sm:py-18 lg:py-20">
+        <section id="about" class="relative overflow-hidden bg-gradient-to-br from-white via-sky-50 to-teal-50/80 py-9 text-slate-950 sm:py-10 lg:py-12">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(29,161,242,0.14),transparent_28%),radial-gradient(circle_at_88%_70%,rgba(45,212,191,0.13),transparent_30%)]"></div>
             <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-300/80 to-transparent"></div>
+            @if($aboutSection)
+                <div class="container relative about-dynamic-grid">
+                    <div class="reveal relative about-dynamic-media">
+                        <div class="absolute -left-5 -top-5 h-28 w-28 rounded-full bg-sky-200/70 blur-2xl"></div>
+                        <div class="relative overflow-hidden rounded-xl border border-sky-100 bg-white p-2.5 shadow-[0_18px_42px_rgba(8,35,68,0.12)]">
+                            <img class="aspect-[4/3] w-full rounded-lg object-cover" src="{{ $aboutSection->imageUrl() }}" alt="{{ $aboutSection->image_alt ?: $aboutSection->heading }}">
+                        </div>
+                        @if($aboutSection->badge_value || $aboutSection->badge_label)
+                            <div class="about-dynamic-badge">
+                                @if($aboutSection->badge_value)
+                                    <strong class="block text-3xl font-black leading-none text-sky-500">{{ $aboutSection->badge_value }}</strong>
+                                @endif
+                                @if($aboutSection->badge_label)
+                                    <span class="mt-2 block text-[10px] font-extrabold uppercase leading-4 tracking-wide text-slate-600">{{ $aboutSection->badge_label }}</span>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="reveal about-dynamic-copy campus-event-accent campus-event-accent--{{ $aboutSection->accent ?: 'sky' }}">
+                        <span class="mb-4 inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.22em] text-sky-500">
+                            <span class="h-0.5 w-9 bg-sky-500"></span>
+                            {{ $aboutSection->eyebrow }}
+                        </span>
+                        <h2 class="about-dynamic-title mb-3 max-w-2xl font-extrabold leading-tight text-slate-950">{{ $aboutSection->heading }}</h2>
+                        @if($aboutSection->body)
+                            <p class="mb-4 max-w-2xl text-[15px] leading-7 text-slate-600">{{ $aboutSection->body }}</p>
+                        @endif
+
+                        @if(! empty($aboutSection->features))
+                            <div class="mb-5 grid gap-2.5 sm:grid-cols-1">
+                                @foreach($aboutSection->features as $feature)
+                                    <div class="about-feature-item campus-event-accent campus-event-accent--{{ $feature['accent'] ?? 'sky' }}">
+                                        <span>&check;</span>
+                                        {{ $feature['text'] ?? '' }}
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if($aboutSection->button_label)
+                            <a href="{{ $aboutSection->button_url ?: '#contact' }}" class="inline-flex min-h-12 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.25)] transition hover:-translate-y-1 hover:bg-sky-400 hover:!text-white">{{ $aboutSection->button_label }}</a>
+                        @endif
+                    </div>
+                </div>
+            @else
+                <div class="container relative">
+                    <div class="about-empty reveal">
+                        <span>About Pending</span>
+                        <h3>No About section content is available right now.</h3>
+                        <p>The college story will appear here after it is added and published from the admin panel.</p>
+                    </div>
+                </div>
+            @endif
+            @if(false)
             <div class="container relative grid items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
                 <div class="reveal relative">
                     <div class="absolute -left-5 -top-5 h-28 w-28 rounded-full bg-sky-200/70 blur-2xl"></div>
@@ -221,6 +276,7 @@
                     </div>
                 @endforelse
             </div>
+            @endif
         </section>
 
         <section id="labs" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20">
@@ -235,42 +291,35 @@
                         </span>
                         <h2 class="text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">Featured Academic Facilities</h2>
                     </div>
-                    <div class="flex gap-3">
-                        <button class="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-3xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white hover:shadow-[0_14px_30px_rgba(29,161,242,0.20)]" type="button" data-card-prev aria-label="Previous facility">&lsaquo;</button>
-                        <button class="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-3xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white hover:shadow-[0_14px_30px_rgba(29,161,242,0.20)]" type="button" data-card-next aria-label="Next facility">&rsaquo;</button>
-                    </div>
+                    @if(($academicFacilities ?? collect())->count() > 1)
+                        <div class="flex gap-3">
+                            <button class="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-3xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white hover:shadow-[0_14px_30px_rgba(29,161,242,0.20)]" type="button" data-card-prev aria-label="Previous facility">&lsaquo;</button>
+                            <button class="grid h-12 w-12 place-items-center rounded-full border border-slate-200 bg-white text-3xl leading-none text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-500 hover:text-white hover:shadow-[0_14px_30px_rgba(29,161,242,0.20)]" type="button" data-card-next aria-label="Next facility">&rsaquo;</button>
+                        </div>
+                    @endif
                 </div>
                 <div class="-mx-5 flex snap-x gap-5 overflow-x-auto px-5 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-card-carousel>
-                    <article class="reveal group min-w-[285px] snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_18px_45px_rgba(8,35,68,0.10)] transition hover:-translate-y-1 hover:border-sky-200 hover:shadow-[0_26px_60px_rgba(29,161,242,0.16)] sm:min-w-[360px] lg:min-w-[390px]">
-                        <div class="overflow-hidden">
-                            <img class="h-60 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&w=900&q=85" alt="Chemistry laboratory equipment">
+                    @forelse($academicFacilities ?? collect() as $facility)
+                        <article class="facility-card campus-event-accent campus-event-accent--{{ $facility->accent ?: 'sky' }} reveal group">
+                            <div class="facility-card__media">
+                                <img src="{{ $facility->imageUrl() }}" alt="{{ $facility->image_alt ?: $facility->title }}">
+                                <div class="facility-card__shine"></div>
+                            </div>
+                            <div class="facility-card__body">
+                                @if($facility->category)
+                                    <span>{{ $facility->category }}</span>
+                                @endif
+                                <h3>{{ $facility->title }}</h3>
+                                <p>{{ $facility->description ?: 'Facility details will be updated soon from the admin panel.' }}</p>
+                            </div>
+                        </article>
+                    @empty
+                        <div class="facilities-empty reveal">
+                            <span>Facilities Pending</span>
+                            <h3>No academic facilities are available right now.</h3>
+                            <p>Featured labs and learning spaces will appear here after they are published from the admin panel.</p>
                         </div>
-                        <div class="p-6">
-                            <span class="mb-3 inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-sky-600">Laboratory</span>
-                            <h3 class="mb-3 text-2xl font-black leading-snug text-slate-950">Pharmaceutical Chemistry Lab</h3>
-                            <p class="text-base leading-7 text-slate-600">Analytical methods, compound behavior, and experimental discipline.</p>
-                        </div>
-                    </article>
-                    <article class="reveal group min-w-[285px] snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_18px_45px_rgba(8,35,68,0.10)] transition hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_26px_60px_rgba(45,212,191,0.14)] sm:min-w-[360px] lg:min-w-[390px]">
-                        <div class="overflow-hidden">
-                            <img class="h-60 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?auto=format&fit=crop&w=900&q=85" alt="Medicine manufacturing and capsules">
-                        </div>
-                        <div class="p-6">
-                            <span class="mb-3 inline-flex rounded-full bg-teal-100 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-teal-700">Practice</span>
-                            <h3 class="mb-3 text-2xl font-black leading-snug text-slate-950">Pharmaceutics &amp; Formulation</h3>
-                            <p class="text-base leading-7 text-slate-600">Dosage form design, stability, quality control, and production concepts.</p>
-                        </div>
-                    </article>
-                    <article class="reveal group min-w-[285px] snap-start overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_18px_45px_rgba(8,35,68,0.10)] transition hover:-translate-y-1 hover:border-indigo-200 hover:shadow-[0_26px_60px_rgba(129,140,248,0.14)] sm:min-w-[360px] lg:min-w-[390px]">
-                        <div class="overflow-hidden">
-                            <img class="h-60 w-full object-cover transition duration-500 group-hover:scale-105" src="https://images.unsplash.com/photo-1579154341098-e4e158cc7f55?auto=format&fit=crop&w=900&q=85" alt="Clinical healthcare discussion">
-                        </div>
-                        <div class="p-6">
-                            <span class="mb-3 inline-flex rounded-full bg-indigo-100 px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-indigo-700">Clinical</span>
-                            <h3 class="mb-3 text-2xl font-black leading-snug text-slate-950">Patient Counseling Studio</h3>
-                            <p class="text-base leading-7 text-slate-600">Communication, case review, medication safety, and ethical practice.</p>
-                        </div>
-                    </article>
+                    @endforelse
                 </div>
             </div>
         </section>
