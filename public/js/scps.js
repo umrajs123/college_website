@@ -319,5 +319,9 @@ document.querySelectorAll('[data-count]').forEach((number) => {
 backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 document.querySelector('.search-modal__box')?.addEventListener('submit', (event) => {
-    event.preventDefault();
+    const input = event.currentTarget.querySelector('input[type="search"]');
+    if (!input?.value.trim()) {
+        event.preventDefault();
+        input?.focus();
+    }
 });

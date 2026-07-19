@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::query()->updateOrCreate([
-            'email' => 'admin@scps.test',
+            'email' => env('ADMIN_EMAIL', 'admin@scps.test'),
         ], [
-            'name' => 'SCPS Admin',
-            'password' => 'password',
+            'name' => env('ADMIN_NAME', 'SCPS Admin'),
+            'password' => env('ADMIN_PASSWORD', 'ChangeMeNow2026'),
         ]);
     }
 }

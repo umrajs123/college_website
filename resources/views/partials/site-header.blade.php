@@ -1,5 +1,7 @@
 @php
     $homeUrl = url('/');
+    $settings = $siteSettings ?? \App\Models\SiteSetting::current();
+    $admissionsUrl = $settings->admissions_url ?: 'https://scps.digitalcampuspro.com/admin/login';
     $isHome = request()->is('/');
     $isNews = request()->routeIs('news.*');
     $isFaculty = request()->routeIs('faculty.*');
@@ -14,13 +16,13 @@
 <header id="siteHeader" class="scps-tailwind-header fixed inset-x-0 top-0 z-50 transition-all duration-300">
     <nav aria-label="Primary navigation">
         <div class="container flex min-h-[92px] items-center justify-between gap-5">
-            <a href="{{ $homeUrl }}" class="flex min-w-0 items-center gap-3 !text-slate-950" aria-label="Swat College of Pharmaceutical Sciences home">
+            <a href="{{ $homeUrl }}" class="flex min-w-0 items-center gap-3 !text-slate-950" aria-label="{{ $settings->site_name }} home">
                 <span class="grid h-16 w-16 shrink-0 place-items-center rounded-full bg-white p-1 shadow-[0_12px_30px_rgba(8,35,68,0.14)]">
-                    <img class="h-full w-full rounded-full object-contain" src="{{ asset('images/scps-logo.png') }}" alt="Swat College of Pharmaceutical Sciences logo">
+                    <img class="h-full w-full rounded-full object-contain" src="{{ $settings->logoUrl() }}" alt="{{ $settings->site_name }} logo">
                 </span>
                 <span class="min-w-0">
-                    <strong class="block truncate text-2xl font-black leading-tight text-[#062b4f]">Swat College</strong>
-                    <small class="block truncate text-xs font-black uppercase tracking-[0.12em] text-slate-500">of Pharmaceutical Sciences</small>
+                    <strong class="block truncate text-2xl font-black leading-tight text-[#062b4f]">{{ $settings->site_name }}</strong>
+                    <small class="block truncate text-xs font-black uppercase tracking-[0.12em] text-slate-500">{{ $settings->site_tagline }}</small>
                 </span>
             </a>
 
@@ -88,10 +90,13 @@
             </ul>
 
             <div class="hidden items-center gap-4 lg:flex">
-                <button class="grid h-14 w-14 place-items-center rounded-full bg-sky-50 text-2xl text-[#062b4f] transition hover:bg-sky-500 hover:text-white" type="button" data-open-search aria-label="Search site">
-                    <span>Q</span>
+                <button class="grid h-12 w-12 place-items-center rounded-full bg-sky-50 text-[#062b4f] transition hover:bg-sky-500 hover:text-white" type="button" data-open-search aria-label="Search site">
+                    <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m20 20-3.5-3.5"></path>
+                    </svg>
                 </button>
-                <a href="{{ $homeUrl }}#admissions" class="inline-flex min-h-14 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.24)] transition hover:-translate-y-0.5 hover:bg-sky-400 hover:!text-white">Apply Now</a>
+                <a href="{{ $admissionsUrl }}" class="inline-flex min-h-14 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.24)] transition hover:-translate-y-0.5 hover:bg-sky-400 hover:!text-white">Apply Now</a>
             </div>
         </div>
     </nav>
@@ -102,11 +107,11 @@
         <div class="mobile-menu__head">
             <a href="{{ $homeUrl }}" class="brand">
                 <span class="brand__seal">
-                    <img src="{{ asset('images/scps-logo.png') }}" alt="Swat College of Pharmaceutical Sciences logo">
+                    <img src="{{ $settings->logoUrl() }}" alt="{{ $settings->site_name }} logo">
                 </span>
                 <span>
-                    <strong>SCPS</strong>
-                    <small>Pharmaceutical Sciences</small>
+                    <strong>{{ $settings->site_name }}</strong>
+                    <small>{{ $settings->site_tagline }}</small>
                 </span>
             </a>
             <button class="mobile-close" type="button" aria-label="Close menu">x</button>
@@ -118,16 +123,16 @@
         <a href="{{ route('events.index') }}" class="{{ $isEvents ? 'mobile-active' : '' }}">Events</a>
         <a href="{{ route('news.index') }}" class="{{ $isNews ? 'mobile-active' : '' }}">News</a>
         <a href="{{ $homeUrl }}#contact">Contact</a>
-        <a href="{{ $homeUrl }}#admissions" class="btn btn--primary">Apply Now</a>
+        <a href="{{ $admissionsUrl }}" class="btn btn--primary">Apply Now</a>
     </div>
 </aside>
 
 <div class="search-modal" aria-hidden="true">
     <button class="search-modal__close" type="button" aria-label="Close search">x</button>
-    <form class="search-modal__box">
+    <form class="search-modal__box" method="GET" action="{{ route('search.index') }}">
         <label for="siteSearch">Search SCPS</label>
         <div>
-            <input id="siteSearch" type="search" placeholder="Search programs, admissions, faculty...">
+            <input id="siteSearch" name="q" type="search" placeholder="Search programs, admissions, faculty..." required>
             <button type="submit">Search</button>
         </div>
     </form>

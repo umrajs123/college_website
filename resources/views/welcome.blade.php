@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Swat College of Pharmaceutical Sciences - pharmacy education, research, clinical training, and student life in Swat.">
-    <title>Swat College of Pharmaceutical Sciences</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/scps-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/scps-logo.png') }}">
+    <meta name="description" content="{{ $siteSettings->site_description ?: 'Swat College of Pharmaceutical Sciences - pharmacy education, research, clinical training, and student life in Swat.' }}">
+    <title>{{ $siteSettings->site_name }} {{ $siteSettings->site_tagline }}</title>
+    <link rel="icon" type="image/png" href="{{ $siteSettings->faviconUrl() }}">
+    <link rel="apple-touch-icon" href="{{ $siteSettings->faviconUrl() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@
                         <small>Learn from qualified faculty</small>
                     </span>
                 </a>
-                <a href="#admissions" class="quick-card reveal">
+                <a href="{{ $siteSettings->admissions_url ?: 'https://scps.digitalcampuspro.com/admin/login' }}" class="quick-card reveal">
                     <span class="quick-card__icon">&check;</span>
                     <span>
                         <strong>Admissions Support</strong>
@@ -252,31 +252,42 @@
                     <a href="#contact" class="inline-flex min-h-12 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.25)] transition hover:-translate-y-1 hover:bg-sky-400 hover:!text-white">Request Information</a>
                 </div>
             </div>
+            @endif
         </section>
 
-        <section id="stats" class="relative overflow-hidden bg-[#062b4f] py-10 text-white sm:py-12">
+        <section id="stats" class="relative overflow-hidden bg-[#062b4f] py-8 mt-6 text-white sm:mt-8 sm:py-9">
             <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_30%,rgba(29,161,242,0.32),transparent_28%),radial-gradient(circle_at_86%_12%,rgba(45,212,191,0.18),transparent_30%)]"></div>
-            <div class="container relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                @forelse($statCounters ?? collect() as $stat)
-                    <div class="homepage-stat-card campus-event-accent campus-event-accent--{{ $stat->accent ?: 'sky' }} reveal">
-                        @if($stat->icon_label)
-                            <span class="homepage-stat-card__icon">{{ $stat->icon_label }}</span>
-                        @endif
-                        <strong data-count="{{ $stat->value }}" data-count-prefix="{{ $stat->prefix }}" data-count-suffix="{{ $stat->suffix }}">0</strong>
-                        <span>{{ $stat->label }}</span>
-                        @if($stat->description)
-                            <small>{{ $stat->description }}</small>
-                        @endif
+            <div class="container relative">
+                <div class="stats-showcase reveal">
+                    <div class="stats-showcase__head">
+                        <span>SCPS in Numbers</span>
+                        <h2>Focused growth, measurable academic progress.</h2>
                     </div>
-                @empty
+
+                    @if(($statCounters ?? collect())->isNotEmpty())
+                        <div class="stats-showcase__grid">
+                            @foreach($statCounters as $stat)
+                                <div class="homepage-stat-card campus-event-accent campus-event-accent--{{ $stat->accent ?: 'sky' }}">
+                                    @if($stat->icon_label)
+                                        <span class="homepage-stat-card__icon">{{ $stat->icon_label }}</span>
+                                    @endif
+                                    <strong data-count="{{ $stat->value }}" data-count-prefix="{{ $stat->prefix }}" data-count-suffix="{{ $stat->suffix }}">0</strong>
+                                    <span>{{ $stat->label }}</span>
+                                    @if($stat->description)
+                                        <small>{{ $stat->description }}</small>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
                     <div class="stats-empty reveal sm:col-span-2 lg:col-span-4">
                         <span>Stats Pending</span>
                         <h3>No homepage counters are available right now.</h3>
                         <p>Animated stats will appear here after they are added and published from the admin panel.</p>
                     </div>
-                @endforelse
+                    @endif
+                </div>
             </div>
-            @endif
         </section>
 
         <section id="labs" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20">
@@ -382,7 +393,7 @@
                     <h2 class="max-w-3xl text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">Begin Your Pharmacy Journey at SCPS</h2>
                     <p class="mt-5 max-w-2xl text-base leading-8 text-slate-600">Applications are open for the next academic session. Visit campus, review eligibility, and speak with our admissions team.</p>
                     <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-                        <a href="#contact" class="inline-flex min-h-12 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.28)] transition hover:-translate-y-1 hover:bg-sky-400 hover:!text-white">Contact Admissions</a>
+                        <a href="{{ $siteSettings->admissions_url ?: 'https://scps.digitalcampuspro.com/admin/login' }}" class="inline-flex min-h-12 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.28)] transition hover:-translate-y-1 hover:bg-sky-400 hover:!text-white">Admissions</a>
                         <a href="#programs" class="inline-flex min-h-12 items-center justify-center rounded border border-slate-200 bg-white px-7 text-sm font-black uppercase tracking-wide !text-slate-950 shadow-sm transition hover:-translate-y-1 hover:border-sky-300 hover:!text-sky-600 hover:shadow-[0_14px_30px_rgba(8,35,68,0.10)]">View Programs</a>
                     </div>
                 </div>
@@ -408,6 +419,69 @@
                 </div>
             </div>
         </section>
+
+        @if($campusLifeSection)
+            <section id="campus" class="relative overflow-hidden bg-gradient-to-br from-white via-sky-50 to-cyan-50/70 py-14 text-slate-950 sm:py-16 lg:py-20">
+                <div class="pointer-events-none absolute -left-24 top-8 h-72 w-72 rounded-full bg-sky-200/55 blur-3xl"></div>
+                <div class="pointer-events-none absolute -right-24 bottom-8 h-72 w-72 rounded-full bg-teal-100/80 blur-3xl"></div>
+                <div class="container relative">
+                    <div class="reveal mb-9 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+                        <div>
+                            <span class="mb-4 inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.22em] text-sky-500">
+                                <span class="h-0.5 w-9 bg-sky-500"></span>
+                                {{ $campusLifeSection->eyebrow }}
+                            </span>
+                            <h2 class="max-w-2xl text-3xl font-extrabold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">{{ $campusLifeSection->heading }}</h2>
+                        </div>
+                        @if($campusLifeSection->body)
+                            <p class="max-w-2xl text-base font-medium leading-8 text-slate-600 lg:justify-self-end">{{ $campusLifeSection->body }}</p>
+                        @endif
+                    </div>
+
+                    <div class="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+                        <div class="reveal group relative min-h-[360px] overflow-hidden rounded-2xl border border-sky-100/80 bg-white shadow-[0_24px_70px_rgba(8,35,68,0.12),0_0_0_8px_rgba(224,242,254,0.58)] ring-1 ring-white/80">
+                            <img class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" src="{{ $campusLifeSection->imageUrl() }}" alt="{{ $campusLifeSection->image_alt ?: $campusLifeSection->heading }}">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#061a2f]/92 via-[#061a2f]/28 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                                @if($campusLifeSection->image_badge)
+                                    <span class="inline-flex rounded-full bg-white/90 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-sky-600 shadow-sm">{{ $campusLifeSection->image_badge }}</span>
+                                @endif
+                                @if($campusLifeSection->image_heading)
+                                    <h3 class="mt-4 max-w-xl text-2xl font-black leading-tight text-white sm:text-3xl">{{ $campusLifeSection->image_heading }}</h3>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="grid gap-5">
+                            @foreach($campusLifeSection->cards ?: [] as $card)
+                                <article class="campus-event-accent campus-event-accent--{{ $card['accent'] ?? 'sky' }} reveal rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_18px_48px_rgba(8,35,68,0.08)] transition hover:-translate-y-1">
+                                    <div class="flex items-start gap-4">
+                                        <span class="campus-life-number grid h-12 w-12 shrink-0 place-items-center rounded-xl text-lg font-black">{{ $loop->iteration < 10 ? '0'.$loop->iteration : $loop->iteration }}</span>
+                                        <div>
+                                            <h3 class="text-xl font-black text-slate-950">{{ $card['title'] ?? '' }}</h3>
+                                            @if(! empty($card['text']))
+                                                <p class="mt-2 text-sm leading-7 text-slate-600">{{ $card['text'] }}</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    @if(! empty($campusLifeSection->highlights))
+                        <div class="reveal mt-5 grid gap-5 md:grid-cols-3">
+                            @foreach($campusLifeSection->highlights as $highlight)
+                                <div class="campus-event-accent campus-event-accent--{{ $highlight['accent'] ?? 'sky' }} rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_16px_42px_rgba(8,35,68,0.07)]">
+                                    <span class="campus-event-link text-xs font-black uppercase tracking-[0.18em]">{{ $highlight['label'] ?? '' }}</span>
+                                    <strong class="mt-2 block text-2xl font-black text-slate-950">{{ $highlight['value'] ?? '' }}</strong>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </section>
+        @endif
 
         <section id="events" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20">
             <div class="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-cyan-50/80 to-transparent"></div>

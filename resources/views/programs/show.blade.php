@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ $program->description ?: $program->title }}">
-    <title>{{ $program->title }} - Swat College of Pharmaceutical Sciences</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/scps-logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('images/scps-logo.png') }}">
+    @php($siteSettings = \App\Models\SiteSetting::current())
+    <title>{{ $program->title }} - {{ $siteSettings->site_name }} {{ $siteSettings->site_tagline }}</title>
+    <link rel="icon" type="image/png" href="{{ $siteSettings->faviconUrl() }}">
+    <link rel="apple-touch-icon" href="{{ $siteSettings->faviconUrl() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
@@ -46,7 +47,7 @@
                         <h1>{{ $program->title }}</h1>
                         <p>{{ $program->description ?: 'Detailed program information will be updated soon from the admin panel.' }}</p>
                         <div class="program-profile-actions">
-                            <a href="{{ url('/') }}#admissions">Apply Now</a>
+                            <a href="{{ $siteSettings->admissions_url ?: 'https://scps.digitalcampuspro.com/admin/login' }}">Apply Now</a>
                             <a href="{{ url('/') }}#programs">Explore Programs</a>
                         </div>
                     </div>

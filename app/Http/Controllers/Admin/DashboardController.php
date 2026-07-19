@@ -7,6 +7,7 @@ use App\Models\AboutSection;
 use App\Models\AcademicProgram;
 use App\Models\AcademicFacility;
 use App\Models\CampusEvent;
+use App\Models\CampusLifeSection;
 use App\Models\FacultyMember;
 use App\Models\HeroSlide;
 use App\Models\LeadershipMessage;
@@ -40,6 +41,8 @@ class DashboardController extends Controller
             'activeFacilityCount' => AcademicFacility::active()->count(),
             'aboutCount' => AboutSection::count(),
             'activeAboutCount' => AboutSection::active()->count(),
+            'campusLifeCount' => CampusLifeSection::count(),
+            'activeCampusLifeCount' => CampusLifeSection::where('is_active', true)->count(),
         ]);
     }
 }
