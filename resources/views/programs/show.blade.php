@@ -17,21 +17,6 @@
 <body class="bg-white text-slate-950">
     @include('partials.site-header')
 
-    @php
-        $sections = collect([
-            'Program Overview' => $program->overview ?: $program->description,
-            'Learning Focus' => $program->learning_focus,
-            'Career Direction' => $program->career_scope,
-        ])->filter(fn ($value) => filled($value));
-
-        $paragraphsFor = function (?string $text) {
-            return collect(preg_split("/\r\n|\n|\r/", trim((string) $text)))
-                ->map(fn ($paragraph) => trim($paragraph))
-                ->filter()
-                ->values();
-        };
-    @endphp
-
     <main class="program-profile campus-event-accent campus-event-accent--{{ $program->accent ?: 'sky' }}">
         <section class="program-profile-hero">
             <div class="container">
@@ -81,11 +66,11 @@
             <div class="container">
                 <div class="program-profile-grid">
                     <article class="program-profile-article">
-                        @forelse($sections as $heading => $content)
+                        @forelse($sections as $heading => $paragraphs)
                             <section>
                                 <span>{{ $loop->iteration < 10 ? '0'.$loop->iteration : $loop->iteration }}</span>
                                 <h2>{{ $heading }}</h2>
-                                @foreach($paragraphsFor($content) as $paragraph)
+                                @foreach($paragraphs as $paragraph)
                                     <p>{{ $paragraph }}</p>
                                 @endforeach
                             </section>
