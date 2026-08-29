@@ -56,3 +56,23 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Hostinger deployment notes
+
+If Hostinger cannot run Node/Vite during deploy, the application needs the Vite build outputs (public/build/manifest.json and the generated assets) present on the server. Two options:
+
+1) Build locally and commit the build outputs (recommended when Hostinger doesn't provide Node):
+
+   - Install Node.js (16+)
+   - cd to project root
+   - npm ci
+   - npm run build
+   - git add public/build public/assets (if present)
+   - git commit -m "Add built Vite assets (manifest + assets)"
+   - git push and redeploy
+
+2) Configure Hostinger to serve the project's public/ directory as the document root. If your Hostinger account uses public_html as the web root, ensure you upload/copy the contents of this repository's public/ into public_html (not the whole repository), or change the document root to point to the repository's public/ folder.
+
+Note: A small fallback has been added to the views so if public/build/manifest.json is missing, the app will load the prebuilt files public/css/scps.css and public/js/scps.js (if present). This avoids the Illuminate\Foundation\ViteManifestNotFoundException when manifest.json is absent.
+
+If you want, provide the built public/build folder (zip or commit) and I can help add it to the repo and push it for you.
