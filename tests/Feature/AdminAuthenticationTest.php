@@ -24,6 +24,7 @@ class AdminAuthenticationTest extends TestCase
         ]);
 
         $this->post('/admin/login', [
+            '_token' => csrf_token(),
             'email' => 'admin@scps.test',
             'password' => 'StrongPass2026',
         ])->assertRedirect(route('admin.dashboard'));
@@ -40,12 +41,14 @@ class AdminAuthenticationTest extends TestCase
 
         foreach (range(1, 5) as $attempt) {
             $this->post('/admin/login', [
+                '_token' => csrf_token(),
                 'email' => 'admin@scps.test',
                 'password' => 'wrong-password',
             ]);
         }
 
         $this->post('/admin/login', [
+            '_token' => csrf_token(),
             'email' => 'admin@scps.test',
             'password' => 'wrong-password',
         ])
@@ -72,6 +75,7 @@ class AdminAuthenticationTest extends TestCase
 
         $this->actingAs($user)
             ->put(route('admin.security.update'), [
+                '_token' => csrf_token(),
                 'current_password' => 'OldStrongPass2026',
                 'password' => 'NewStrongPass2026',
                 'password_confirmation' => 'NewStrongPass2026',
