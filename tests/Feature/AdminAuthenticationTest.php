@@ -23,11 +23,12 @@ class AdminAuthenticationTest extends TestCase
             'password' => 'StrongPass2026',
         ]);
 
-        $this->post('/admin/login', [
-            '_token' => csrf_token(),
-            'email' => 'admin@scps.test',
-            'password' => 'StrongPass2026',
-        ])->assertRedirect(route('admin.dashboard'));
+        $this->withSession(['_token' => 'test-admin-token'])
+            ->post('/admin/login', [
+                '_token' => 'test-admin-token',
+                'email' => 'admin@scps.test',
+                'password' => 'StrongPass2026',
+            ])->assertRedirect(route('admin.dashboard'));
 
         $this->assertAuthenticated();
     }
@@ -40,18 +41,20 @@ class AdminAuthenticationTest extends TestCase
         ]);
 
         foreach (range(1, 5) as $attempt) {
-            $this->post('/admin/login', [
-                '_token' => csrf_token(),
-                'email' => 'admin@scps.test',
-                'password' => 'wrong-password',
-            ]);
+            $this->withSession(['_token' => 'test-admin-token'])
+                ->post('/admin/login', [
+                    '_token' => 'test-admin-token',
+                    'email' => 'admin@scps.test',
+                    'password' => 'wrong-password',
+                ]);
         }
 
-        $this->post('/admin/login', [
-            '_token' => csrf_token(),
-            'email' => 'admin@scps.test',
-            'password' => 'wrong-password',
-        ])
+        $this->withSession(['_token' => 'test-admin-token'])
+            ->post('/admin/login', [
+                '_token' => 'test-admin-token',
+                'email' => 'admin@scps.test',
+                'password' => 'wrong-password',
+            ])
             ->assertRedirect()
             ->assertSessionHas('lockout_seconds')
             ->assertSessionHasErrors('email');
@@ -73,9 +76,10 @@ class AdminAuthenticationTest extends TestCase
             'password' => 'OldStrongPass2026',
         ]);
 
-        $this->actingAs($user)
+        $this->withSession(['_token' => 'test-admin-token'])
+            ->actingAs($user)
             ->put(route('admin.security.update'), [
-                '_token' => csrf_token(),
+                '_token' => 'test-admin-token',
                 'current_password' => 'OldStrongPass2026',
                 'password' => 'NewStrongPass2026',
                 'password_confirmation' => 'NewStrongPass2026',
