@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Schema;
 ])]
 class SiteSetting extends Model
 {
+    protected $guarded = [];
+
     public static function current(): self
     {
         if (Schema::hasTable('site_settings')) {

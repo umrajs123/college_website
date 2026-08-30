@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Schema;
 ])]
 class CampusLifeSection extends Model
 {
+    protected $guarded = [];
+
     protected function casts(): array
     {
         return [
