@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'title',
-    'description',
-    'starts_at',
-    'venue',
-    'category',
-    'accent',
-    'sort_order',
-    'is_active',
-])]
 class CampusEvent extends Model
 {
+    protected $fillable = [
+        'title',
+        'description',
+        'starts_at',
+        'venue',
+        'category',
+        'accent',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

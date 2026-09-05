@@ -105,6 +105,8 @@ class LeadershipMessageController extends Controller
             ->all();
         $validated['is_active'] = $request->boolean('is_active');
 
+        unset($validated['image']);
+
         return $validated;
     }
 }

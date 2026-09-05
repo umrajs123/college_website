@@ -2,23 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'role',
-    'title',
-    'subtitle',
-    'message',
-    'image_path',
-    'tags',
-    'accent',
-    'sort_order',
-    'is_active',
-])]
 class LeadershipMessage extends Model
 {
+    protected $fillable = [
+        'role',
+        'title',
+        'subtitle',
+        'message',
+        'image_path',
+        'tags',
+        'accent',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

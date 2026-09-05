@@ -2,23 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'label',
-    'value',
-    'prefix',
-    'suffix',
-    'icon_label',
-    'description',
-    'accent',
-    'sort_order',
-    'is_active',
-])]
 class StatCounter extends Model
 {
+    protected $fillable = [
+        'label',
+        'value',
+        'prefix',
+        'suffix',
+        'icon_label',
+        'description',
+        'accent',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

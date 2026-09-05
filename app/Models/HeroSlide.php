@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'eyebrow',
-    'heading',
-    'body',
-    'image_path',
-    'image_alt',
-    'primary_label',
-    'primary_url',
-    'secondary_label',
-    'secondary_url',
-    'sort_order',
-    'is_active',
-])]
 class HeroSlide extends Model
 {
+    protected $fillable = [
+        'eyebrow',
+        'heading',
+        'body',
+        'image_path',
+        'image_alt',
+        'primary_label',
+        'primary_url',
+        'secondary_label',
+        'secondary_url',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

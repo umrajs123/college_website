@@ -2,23 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'name',
-    'program',
-    'quote',
-    'image_path',
-    'image_alt',
-    'highlights',
-    'accent',
-    'sort_order',
-    'is_active',
-])]
 class StudentVoice extends Model
 {
+    protected $fillable = [
+        'name',
+        'program',
+        'quote',
+        'image_path',
+        'image_alt',
+        'highlights',
+        'accent',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

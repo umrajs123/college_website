@@ -25,3 +25,8 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Local sample content
+/database/sample-content.sql
+/database/seeders/SampleContentSeeder.php
+/database/seeders/data/sample-content.json

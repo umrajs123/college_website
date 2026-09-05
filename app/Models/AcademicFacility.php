@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'title',
-    'category',
-    'description',
-    'image_path',
-    'image_alt',
-    'accent',
-    'sort_order',
-    'is_active',
-])]
 class AcademicFacility extends Model
 {
+    protected $fillable = [
+        'title',
+        'category',
+        'description',
+        'image_path',
+        'image_alt',
+        'accent',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

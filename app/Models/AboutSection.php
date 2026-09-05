@@ -2,27 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'eyebrow',
-    'heading',
-    'body',
-    'image_path',
-    'image_alt',
-    'badge_value',
-    'badge_label',
-    'button_label',
-    'button_url',
-    'features',
-    'accent',
-    'sort_order',
-    'is_active',
-])]
 class AboutSection extends Model
 {
+    protected $fillable = [
+        'eyebrow',
+        'heading',
+        'body',
+        'image_path',
+        'image_alt',
+        'badge_value',
+        'badge_label',
+        'button_label',
+        'button_url',
+        'features',
+        'accent',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

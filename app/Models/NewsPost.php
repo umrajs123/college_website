@@ -2,25 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'title',
-    'slug',
-    'category',
-    'excerpt',
-    'body',
-    'image_path',
-    'image_alt',
-    'accent',
-    'published_at',
-    'sort_order',
-    'is_active',
-])]
 class NewsPost extends Model
 {
+    protected $fillable = [
+        'title',
+        'slug',
+        'category',
+        'excerpt',
+        'body',
+        'image_path',
+        'image_alt',
+        'accent',
+        'published_at',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

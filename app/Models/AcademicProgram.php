@@ -2,27 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'title',
-    'slug',
-    'icon_label',
-    'description',
-    'duration',
-    'eligibility',
-    'overview',
-    'learning_focus',
-    'career_scope',
-    'accent',
-    'link_url',
-    'sort_order',
-    'is_active',
-])]
 class AcademicProgram extends Model
 {
+    protected $fillable = [
+        'title',
+        'slug',
+        'icon_label',
+        'description',
+        'duration',
+        'eligibility',
+        'overview',
+        'learning_focus',
+        'career_scope',
+        'accent',
+        'link_url',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

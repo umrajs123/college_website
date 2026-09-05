@@ -2,30 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable([
-    'name',
-    'slug',
-    'designation',
-    'department',
-    'image_path',
-    'accent',
-    'summary',
-    'bio',
-    'education',
-    'experience',
-    'specialties',
-    'courses',
-    'email',
-    'office',
-    'sort_order',
-    'is_active',
-])]
 class FacultyMember extends Model
 {
+    protected $fillable = [
+        'name',
+        'slug',
+        'designation',
+        'department',
+        'image_path',
+        'accent',
+        'summary',
+        'bio',
+        'education',
+        'experience',
+        'specialties',
+        'courses',
+        'email',
+        'office',
+        'sort_order',
+        'is_active',
+    ];
+
     protected function casts(): array
     {
         return [

@@ -2,25 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
-#[Fillable([
-    'eyebrow',
-    'heading',
-    'body',
-    'image_path',
-    'image_alt',
-    'image_badge',
-    'image_heading',
-    'cards',
-    'highlights',
-    'is_active',
-])]
 class CampusLifeSection extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'eyebrow',
+        'heading',
+        'body',
+        'image_path',
+        'image_alt',
+        'image_badge',
+        'image_heading',
+        'cards',
+        'highlights',
+        'is_active',
+    ];
 
     protected function casts(): array
     {

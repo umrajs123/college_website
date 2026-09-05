@@ -2,28 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
-#[Fillable([
-    'site_name',
-    'site_tagline',
-    'site_description',
-    'logo_path',
-    'favicon_path',
-    'phone',
-    'email',
-    'address',
-    'admissions_url',
-    'facebook_url',
-    'linkedin_url',
-    'youtube_url',
-    'privacy_url',
-])]
 class SiteSetting extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'site_name',
+        'site_tagline',
+        'site_description',
+        'logo_path',
+        'favicon_path',
+        'phone',
+        'email',
+        'address',
+        'admissions_url',
+        'facebook_url',
+        'linkedin_url',
+        'youtube_url',
+        'privacy_url',
+    ];
 
     public static function current(): self
     {
