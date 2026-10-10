@@ -1388,6 +1388,10 @@ select {
     gap: 14px;
 }
 
+.leadership-admin-list article {
+    grid-template-columns: 104px 1fr auto;
+}
+
 .leadership-admin-list article,
 .hero-admin-list article,
 .faculty-admin-list article,
@@ -1487,6 +1491,12 @@ select {
     border-radius: 999px;
     object-fit: cover;
     box-shadow: 0 12px 26px rgba(8, 35, 68, .14);
+}
+
+.leadership-admin-list img {
+    width: 104px;
+    height: 104px;
+    border-radius: 16px;
 }
 
 .hero-admin-list {
@@ -1891,6 +1901,12 @@ select {
     border-radius: 999px;
     object-fit: cover;
     box-shadow: 0 18px 36px rgba(8, 35, 68, .15);
+}
+
+.leadership-preview-card img {
+    width: clamp(140px, 18vw, 190px);
+    height: clamp(140px, 18vw, 190px);
+    border-radius: 18px;
 }
 
 .hero-preview-card img {

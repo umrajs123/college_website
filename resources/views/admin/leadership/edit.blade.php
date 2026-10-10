@@ -75,7 +75,7 @@
                 </label>
 
                 <label class="span-2">
-                    Upload New Image
+                    Upload New Profile Picture (up to 4 MB)
                     <input type="file" name="image" accept="image/*">
                     @error('image') <small class="field-error">{{ $message }}</small> @enderror
                 </label>
@@ -87,7 +87,7 @@
             </div>
         </section>
 
-        <aside class="admin-preview-card">
+        <aside class="admin-preview-card leadership-preview-card">
             <span class="admin-kicker">{{ $isCreate ? 'New Message' : 'Current Message' }}</span>
             @if(! $isCreate || $message->image_path)
                 <img src="{{ $message->imageUrl() }}" alt="{{ $message->role ?: 'Leadership' }} portrait">

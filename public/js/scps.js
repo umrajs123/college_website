@@ -325,3 +325,26 @@ document.querySelector('.search-modal__box')?.addEventListener('submit', (event)
         input?.focus();
     }
 });
+
+const leadershipMessages = [...document.querySelectorAll('[data-leadership-message]')];
+
+leadershipMessages.forEach((message) => {
+    const text = message.querySelector('[data-leadership-message-text]');
+    const toggle = message.querySelector('[data-leadership-message-toggle]');
+    if (!text || !toggle) return;
+
+    const updateOverflow = () => {
+        if (!message.classList.contains('is-expanded')) {
+            toggle.hidden = text.scrollHeight <= text.clientHeight + 1;
+        }
+    };
+
+    updateOverflow();
+    window.addEventListener('resize', updateOverflow);
+
+    toggle.addEventListener('click', () => {
+        const expanded = message.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', String(expanded));
+        toggle.textContent = expanded ? 'Read Less' : 'Read More';
+    });
+});

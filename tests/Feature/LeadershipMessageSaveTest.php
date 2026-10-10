@@ -4,7 +4,9 @@ namespace Tests\Feature;
 
 use App\Models\LeadershipMessage;
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class LeadershipMessageSaveTest extends TestCase
@@ -32,6 +34,7 @@ class LeadershipMessageSaveTest extends TestCase
     {
         $message = LeadershipMessage::create(array_replace($this->payload(), [
             'title' => 'Original title',
+            'message' => 'Original message',
             'tags' => [],
         ]));
 
@@ -42,8 +45,30 @@ class LeadershipMessageSaveTest extends TestCase
 
         $message->refresh();
         $this->assertSame('A commitment to learning', $message->title);
+        $this->assertSame($this->payload()['message'], $message->message);
         $this->assertSame(['Teaching', 'Care'], $message->tags);
         $this->assertTrue($message->is_active);
+    }
+
+    public function test_admin_can_update_message_and_upload_a_larger_profile_picture(): void
+    {
+        Storage::fake('public');
+        $message = LeadershipMessage::create(array_replace($this->payload(), [
+            'message' => 'Original message',
+            'image_path' => 'leadership/original.jpg',
+        ]));
+        $longMessage = str_repeat('A thoughtful message for our students and community.', 25);
+
+        $this->put(route('admin.leadership.update', $message), array_replace($this->payload(), [
+            'message' => $longMessage,
+            'image_path' => 'leadership/original.jpg',
+            'image' => UploadedFile::fake()->image('leadership.jpg')->size(3072),
+        ]))->assertRedirect(route('admin.leadership.index'))->assertSessionHasNoErrors();
+
+        $message->refresh();
+        $this->assertSame($longMessage, $message->message);
+        $this->assertNotSame('leadership/original.jpg', $message->image_path);
+        Storage::disk('public')->assertExists($message->image_path);
     }
 
     public function test_admin_can_create_a_leadership_message(): void

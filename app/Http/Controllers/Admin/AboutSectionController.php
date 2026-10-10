@@ -80,7 +80,7 @@ class AboutSectionController extends Controller
         $validated = $request->validate([
             'eyebrow' => ['required', 'string', 'max:80'],
             'heading' => ['required', 'string', 'max:180'],
-            'body' => ['nullable', 'string', 'max:1200'],
+            'body' => ['nullable', 'string'],
             'image_path' => ['nullable', 'string', 'max:700'],
             'image' => ['nullable', 'image', 'max:4096'],
             'image_alt' => ['nullable', 'string', 'max:180'],

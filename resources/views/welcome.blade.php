@@ -104,7 +104,17 @@
                         <img src="{{ $message->imageUrl() }}" alt="{{ $message->role }} portrait">
                     </div>
                     --}}
-                    <p>{{ $message->message }}</p>
+                    <div class="leadership-card__message" data-leadership-message>
+                        <p id="leadership-message-{{ $message->id }}" data-leadership-message-text>{{ $message->message }}</p>
+                        <button
+                            class="leadership-card__read-more"
+                            type="button"
+                            aria-controls="leadership-message-{{ $message->id }}"
+                            aria-expanded="false"
+                            data-leadership-message-toggle
+                            hidden
+                        >Read More</button>
+                    </div>
                     @if(! empty($message->tags))
                     <div class="leadership-card__tags">
                         @foreach($message->tags as $tag)
@@ -637,4 +647,3 @@
     @include('partials.site-footer')
 </body>
 </html>
-
