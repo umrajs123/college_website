@@ -22,12 +22,12 @@
                 @foreach($heroSlides as $slide)
                     <article data-hero-slide class="{{ $loop->first ? 'active ' : '' }}absolute inset-0">
                         <img class="absolute inset-0 h-full w-full object-cover" src="{{ $slide->imageUrl() }}" alt="{{ $slide->image_alt ?: $slide->heading }}">
-                        <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,18,35,0.88),rgba(5,18,35,0.58)_44%,rgba(5,18,35,0.76)),linear-gradient(180deg,rgba(5,18,35,0.68),rgba(5,18,35,0.2)_40%,rgba(5,18,35,0.95))]"></div>
+                        <div class="scps-hero-image-overlay absolute inset-0"></div>
                         <div class="container relative z-10 flex min-h-[650px] items-center pt-6 sm:min-h-[675px] sm:pt-8 lg:min-h-[710px] lg:pt-10">
                             <div class="scps-hero-copy mx-auto max-w-5xl text-center">
                                 <span class="mb-3 inline-flex items-center justify-center text-sm font-black uppercase tracking-[0.28em] text-sky-400 sm:text-base">{{ $slide->eyebrow }}</span>
                                 <h1 class="mx-auto max-w-5xl text-4xl font-black leading-[1.05] text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)] sm:text-5xl lg:text-6xl">{{ $slide->heading }}</h1>
-                                <p class="mx-auto mt-5 max-w-3xl text-base font-medium leading-8 text-white/90 sm:text-lg">{{ $slide->body }}</p>
+                                <p class="scps-hero-body mx-auto mt-5 max-w-3xl text-base font-medium leading-8 text-white/90 sm:text-lg">{{ $slide->body }}</p>
                                 @if($slide->primary_label || $slide->secondary_label)
                                     <div class="mt-7 flex flex-wrap items-center justify-center gap-4">
                                         @if($slide->primary_label)

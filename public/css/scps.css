@@ -87,6 +87,24 @@ input {
     animation: heroImageDrift 13s ease-in-out infinite alternate both;
 }
 
+.scps-hero-image-overlay {
+    background:
+        linear-gradient(90deg, rgba(4, 17, 31, .56) 0%, rgba(4, 17, 31, .2) 48%, rgba(4, 17, 31, .48) 100%),
+        linear-gradient(180deg, rgba(4, 17, 31, .24) 0%, rgba(4, 17, 31, .04) 42%, rgba(4, 17, 31, .64) 100%);
+}
+
+.scps-hero-body {
+    text-shadow: 0 2px 16px rgba(0, 0, 0, .7);
+}
+
+@media (max-width: 767px) {
+    .scps-hero-image-overlay {
+        background:
+            linear-gradient(90deg, rgba(4, 17, 31, .42), rgba(4, 17, 31, .18) 50%, rgba(4, 17, 31, .42)),
+            linear-gradient(180deg, rgba(4, 17, 31, .22), rgba(4, 17, 31, .08) 38%, rgba(4, 17, 31, .58));
+    }
+}
+
 [data-hero-slide] .typing-cursor {
     display: inline-block;
     width: .08em;
@@ -200,8 +218,40 @@ input {
     background: #ffffff;
 }
 
+#siteHeader.scps-tailwind-header .nav-toggle {
+    border: 1px solid rgba(255, 255, 255, .32);
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(15, 54, 89, .92), rgba(6, 35, 62, .82));
+    box-shadow: 0 8px 22px rgba(2, 18, 34, .2), inset 0 1px 0 rgba(255, 255, 255, .12);
+    transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+#siteHeader.scps-tailwind-header .nav-toggle:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, .55);
+    background: linear-gradient(145deg, #17649a, #0b4da2);
+    box-shadow: 0 10px 25px rgba(2, 18, 34, .28);
+}
+
+#siteHeader.scps-tailwind-header .nav-toggle:focus-visible {
+    outline: 3px solid rgba(125, 211, 252, .9);
+    outline-offset: 3px;
+}
+
 #siteHeader.scps-tailwind-header.is-sticky .nav-toggle span {
     background: #062b4f;
+}
+
+#siteHeader.scps-tailwind-header.is-sticky .nav-toggle {
+    border-color: #dbeafe;
+    background: linear-gradient(145deg, #ffffff, #eaf5ff);
+    box-shadow: 0 8px 20px rgba(8, 35, 68, .12), inset 0 1px 0 #ffffff;
+}
+
+#siteHeader.scps-tailwind-header.is-sticky .nav-toggle:hover {
+    border-color: #bfdbfe;
+    background: linear-gradient(145deg, #f0f9ff, #dbeafe);
+    box-shadow: 0 10px 24px rgba(8, 35, 68, .16);
 }
 
 #siteHeader.scps-tailwind-header:not(.is-sticky) > nav > .container > ul > li > a {
