@@ -72,7 +72,7 @@
             </div>
         </section>
 
-        <section class="leadership-section">
+        <section id="leadership" class="leadership-section">
             <div class="container">
                 <div class="leadership-heading reveal">
                     <span>Leadership Messages</span>
@@ -106,14 +106,13 @@
                     --}}
                     <div class="leadership-card__message" data-leadership-message>
                         <p id="leadership-message-{{ $message->id }}" data-leadership-message-text>{{ $message->message }}</p>
-                        <button
+                        <a
                             class="leadership-card__read-more"
-                            type="button"
-                            aria-controls="leadership-message-{{ $message->id }}"
-                            aria-expanded="false"
-                            data-leadership-message-toggle
+                            href="{{ route('leadership.show', $message) }}"
+                            aria-label="Read the full message from the {{ $message->role }}"
+                            data-leadership-message-link
                             hidden
-                        >Read More</button>
+                        >Read More</a>
                     </div>
                     @if(! empty($message->tags))
                     <div class="leadership-card__tags">

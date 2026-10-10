@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\StudentVoiceController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeadershipMessageController as PublicLeadershipMessageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SearchController;
@@ -35,6 +36,7 @@ Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/faculty', [FacultyController::class, 'index'])->name('faculty.index');
 Route::get('/faculty/{slug}', [FacultyController::class, 'show'])->name('faculty.show');
+Route::get('/leadership/{leadershipMessage}', [PublicLeadershipMessageController::class, 'show'])->name('leadership.show');
 
 /*
 |--------------------------------------------------------------------------

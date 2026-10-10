@@ -79,6 +79,31 @@ class LeadershipMessageSaveTest extends TestCase
         $this->assertDatabaseHas('leadership_messages', ['role' => 'Director', 'title' => 'A commitment to learning']);
     }
 
+    public function test_public_can_read_complete_active_leadership_message(): void
+    {
+        $message = LeadershipMessage::create(array_replace($this->payload(), [
+            'message' => str_repeat('A complete leadership message for the college community. ', 25),
+            'tags' => ['Learning'],
+            'is_active' => true,
+        ]));
+
+        $this->get(route('leadership.show', $message))
+            ->assertOk()
+            ->assertSee($message->title)
+            ->assertSee('A complete leadership message for the college community.')
+            ->assertSee($message->imageUrl())
+            ->assertSee('Leadership Messages');
+    }
+
+    public function test_public_cannot_read_inactive_leadership_message(): void
+    {
+        $message = LeadershipMessage::create(array_replace($this->payload(), [
+            'is_active' => false,
+        ]));
+
+        $this->get(route('leadership.show', $message))->assertNotFound();
+    }
+
     public function test_user_credentials_are_hidden_when_serialized(): void
     {
         $user = User::factory()->make(['remember_token' => 'private-token']);

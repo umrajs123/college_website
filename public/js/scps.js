@@ -330,21 +330,13 @@ const leadershipMessages = [...document.querySelectorAll('[data-leadership-messa
 
 leadershipMessages.forEach((message) => {
     const text = message.querySelector('[data-leadership-message-text]');
-    const toggle = message.querySelector('[data-leadership-message-toggle]');
-    if (!text || !toggle) return;
+    const link = message.querySelector('[data-leadership-message-link]');
+    if (!text || !link) return;
 
     const updateOverflow = () => {
-        if (!message.classList.contains('is-expanded')) {
-            toggle.hidden = text.scrollHeight <= text.clientHeight + 1;
-        }
+        link.hidden = text.scrollHeight <= text.clientHeight + 1;
     };
 
     updateOverflow();
     window.addEventListener('resize', updateOverflow);
-
-    toggle.addEventListener('click', () => {
-        const expanded = message.classList.toggle('is-expanded');
-        toggle.setAttribute('aria-expanded', String(expanded));
-        toggle.textContent = expanded ? 'Read Less' : 'Read More';
-    });
 });
