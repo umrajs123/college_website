@@ -6,6 +6,7 @@
     $isNews = request()->routeIs('news.*');
     $isFaculty = request()->routeIs('faculty.*');
     $isEvents = request()->routeIs('events.*');
+    $isNursing = request()->routeIs('nursing.*');
     $isPrograms = request()->routeIs('programs.*') || $isFaculty || $isEvents;
 @endphp
 
@@ -74,11 +75,17 @@
                                 <a href="{{ route('events.index') }}" class="block rounded px-3 py-2 text-sm font-bold !text-slate-700 transition hover:bg-sky-50 hover:!text-sky-600">Seminars</a>
                             </div>
                             <div class="rounded-lg bg-[#062b4f] p-5 text-white">
-                                <strong class="block text-lg font-black">Modern pharmacy education</strong>
-                                <p class="mt-3 text-sm leading-6 text-sky-50/80">Classroom learning, laboratory practice, and clinical exposure in one focused pathway.</p>
+                                <strong class="block text-lg font-black">Explore your next step</strong>
+                                <p class="mt-3 text-sm leading-6 text-sky-50/80">Discover academic pathways shaped by knowledge, practical learning, and care.</p>
                             </div>
                         </div>
                     </div>
+                </li>
+                <li>
+                    <a href="{{ route('nursing.index') }}" class="nursing-nav-link relative inline-flex items-center gap-2 py-8 text-sm font-black uppercase tracking-wide transition hover:!text-sky-500 {{ $isNursing ? 'is-active !text-sky-500' : '' }}" @if($isNursing) aria-current="page" @endif>
+                        Nursing <span class="nursing-nav-indicator" aria-hidden="true">+</span>
+                        <span class="absolute inset-x-0 bottom-6 h-0.5 bg-sky-500 transition {{ $isNursing ? 'scale-x-100' : 'scale-x-0' }}"></span>
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('news.index') }}" class="relative inline-flex items-center gap-2 py-8 text-sm font-black uppercase tracking-wide transition hover:!text-sky-500 {{ $isNews ? 'is-active !text-sky-500' : '' }}">
@@ -96,7 +103,7 @@
                         <path d="m20 20-3.5-3.5"></path>
                     </svg>
                 </button>
-                <a href="{{ $admissionsUrl }}" class="inline-flex min-h-14 items-center justify-center rounded bg-sky-500 px-7 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.24)] transition hover:-translate-y-0.5 hover:bg-sky-400 hover:!text-white">Apply Now</a>
+                <a href="{{ $admissionsUrl }}" class="site-apply-button inline-flex min-h-14 items-center justify-center rounded bg-sky-500 px-5 text-sm font-black uppercase tracking-wide !text-white shadow-[0_16px_32px_rgba(29,161,242,0.24)] transition hover:-translate-y-0.5 hover:bg-sky-400 hover:!text-white">Apply Now</a>
             </div>
         </div>
     </nav>
@@ -119,6 +126,7 @@
         <a href="{{ $homeUrl }}" class="{{ $isHome ? 'mobile-active' : '' }}">Home</a>
         <a href="{{ $homeUrl }}#about">About</a>
         <a href="{{ $homeUrl }}#programs" class="{{ $isPrograms ? 'mobile-active' : '' }}">Programs</a>
+        <a href="{{ route('nursing.index') }}" class="{{ $isNursing ? 'mobile-active' : '' }}">Nursing</a>
         <a href="{{ route('faculty.index') }}" class="{{ $isFaculty ? 'mobile-active' : '' }}">Faculty</a>
         <a href="{{ route('events.index') }}" class="{{ $isEvents ? 'mobile-active' : '' }}">Events</a>
         <a href="{{ route('news.index') }}" class="{{ $isNews ? 'mobile-active' : '' }}">News</a>

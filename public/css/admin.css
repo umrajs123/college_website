@@ -1834,6 +1834,46 @@ select {
     gap: 16px;
 }
 
+.nursing-admin-image {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #f8fbff, #f0fdfa);
+    padding: 16px;
+}
+
+.nursing-admin-image img {
+    width: min(100%, 340px);
+    height: 190px;
+    border: 4px solid #ffffff;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 12px 28px rgba(8, 35, 68, .12);
+}
+
+.nursing-admin-image small,
+.nursing-admin-image p,
+.field-hint {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.65;
+}
+
+.admin-dark .nursing-admin-image {
+    border-color: rgba(125, 211, 252, .16);
+    background: linear-gradient(145deg, rgba(8, 35, 68, .8), rgba(7, 54, 61, .62));
+}
+
+.admin-dark .nursing-admin-image small,
+.admin-dark .nursing-admin-image p,
+.admin-dark .field-hint {
+    color: #a6b8ca;
+}
+
 .admin-form-grid label,
 .login-card__form label {
     display: grid;

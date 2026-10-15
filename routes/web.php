@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\FacultyMemberController;
 use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\LeadershipMessageController;
 use App\Http\Controllers\Admin\NewsPostController;
+use App\Http\Controllers\Admin\NursingPageSectionController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\StatCounterController;
 use App\Http\Controllers\Admin\StudentVoiceController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadershipMessageController as PublicLeadershipMessageController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NursingController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class)->name('home');
 Route::get('/search', SearchController::class)->name('search.index');
 Route::get('/programs/{slug}', [ProgramController::class, 'show'])->name('programs.show');
+Route::get('/nursing', NursingController::class)->name('nursing.index');
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
@@ -102,6 +105,14 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/programs/{program}/edit', [AcademicProgramController::class, 'edit'])->name('programs.edit');
     Route::put('/programs/{program}', [AcademicProgramController::class, 'update'])->name('programs.update');
     Route::delete('/programs/{program}', [AcademicProgramController::class, 'destroy'])->name('programs.destroy');
+
+    // Nursing: dedicated public Nursing College page content.
+    Route::get('/nursing', [NursingPageSectionController::class, 'index'])->name('nursing.index');
+    Route::get('/nursing/create', [NursingPageSectionController::class, 'create'])->name('nursing.create');
+    Route::post('/nursing', [NursingPageSectionController::class, 'store'])->name('nursing.store');
+    Route::get('/nursing/{section}/edit', [NursingPageSectionController::class, 'edit'])->name('nursing.edit');
+    Route::put('/nursing/{section}', [NursingPageSectionController::class, 'update'])->name('nursing.update');
+    Route::delete('/nursing/{section}', [NursingPageSectionController::class, 'destroy'])->name('nursing.destroy');
 
     // 08. Stats: homepage animated counter values.
     Route::get('/stats', [StatCounterController::class, 'index'])->name('stats.index');

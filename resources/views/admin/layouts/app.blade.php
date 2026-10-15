@@ -28,6 +28,7 @@
             ['label' => 'Events', 'hint' => 'Campus calendar and event listings', 'url' => route('admin.events.index'), 'code' => 'EV'],
             ['label' => 'News', 'hint' => 'Announcements and story posts', 'url' => route('admin.news.index'), 'code' => 'NW'],
             ['label' => 'Programs', 'hint' => 'Academic areas and program pages', 'url' => route('admin.programs.index'), 'code' => 'PR'],
+            ['label' => 'Nursing Page', 'hint' => 'Nursing College page content', 'url' => route('admin.nursing.index'), 'code' => 'NC'],
             ['label' => 'Stats', 'hint' => 'Homepage animated counters', 'url' => route('admin.stats.index'), 'code' => 'ST'],
             ['label' => 'Student Voices', 'hint' => 'Homepage testimonial slider', 'url' => route('admin.student-voices.index'), 'code' => 'SV'],
             ['label' => 'Facilities', 'hint' => 'Labs and academic facilities', 'url' => route('admin.facilities.index'), 'code' => 'LB'],
@@ -83,32 +84,36 @@
                 <span>07</span>
                 Programs
             </a>
-            <a class="{{ request()->routeIs('admin.stats.*') ? 'active' : '' }}" href="{{ route('admin.stats.index') }}">
+            <a class="{{ request()->routeIs('admin.nursing.*') ? 'active' : '' }}" href="{{ route('admin.nursing.index') }}">
                 <span>08</span>
+                Nursing Page
+            </a>
+            <a class="{{ request()->routeIs('admin.stats.*') ? 'active' : '' }}" href="{{ route('admin.stats.index') }}">
+                <span>09</span>
                 Stats
             </a>
             <a class="{{ request()->routeIs('admin.student-voices.*') ? 'active' : '' }}" href="{{ route('admin.student-voices.index') }}">
-                <span>09</span>
+                <span>10</span>
                 Student Voices
             </a>
             <a class="{{ request()->routeIs('admin.facilities.*') ? 'active' : '' }}" href="{{ route('admin.facilities.index') }}">
-                <span>10</span>
+                <span>11</span>
                 Facilities
             </a>
             <a class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}" href="{{ route('admin.about.index') }}">
-                <span>11</span>
+                <span>12</span>
                 About
             </a>
             <a class="{{ request()->routeIs('admin.campus-life.*') ? 'active' : '' }}" href="{{ route('admin.campus-life.edit') }}">
-                <span>12</span>
+                <span>13</span>
                 Campus Life
             </a>
             <a class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" href="{{ route('admin.settings.edit') }}">
-                <span>13</span>
+                <span>14</span>
                 Site Settings
             </a>
             <a class="{{ request()->routeIs('admin.security.*') ? 'active' : '' }}" href="{{ route('admin.security.edit') }}">
-                <span>14</span>
+                <span>15</span>
                 Security
             </a>
         </nav>
