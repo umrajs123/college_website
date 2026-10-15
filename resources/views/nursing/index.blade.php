@@ -27,7 +27,7 @@
                 <div class="nursing-hero__panel">
                     <div class="nursing-hero__copy">
                         <span class="nursing-kicker">{{ $hero?->eyebrow ?: 'School of Nursing' }}</span>
-                        <h1>{{ $hero?->title ?: 'Nursing at SCPS' }}</h1>
+                        <h1>{{ $hero?->title ?: 'Nursing at SCPS' }} <span class="nursing-hero__stethoscope" aria-hidden="true"><svg viewBox="0 0 48 56" fill="none"><path d="M12 8v10a9 9 0 0 0 18 0V8m-21 0h6m12 0h6M21 27v3a8 8 0 0 0 8 8h4" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v5m18-5v5" stroke="#c62828" stroke-width="3" stroke-linecap="round"/><circle cx="38" cy="38" r="5" fill="#c62828"/><circle cx="38" cy="38" r="2" fill="#fff"/><path d="M38 43v2a6 6 0 0 1-6 6h-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span></h1>
                         <p>{{ $hero?->body ?: 'Explore a nursing education built around knowledge, practical preparation, and compassionate care.' }}</p>
                         <div class="nursing-actions">
                             <a href="{{ $hero?->button_url ?: $siteSettings->admissions_url ?: url('/#contact') }}">{{ $hero?->button_label ?: 'Explore Admissions' }}</a>

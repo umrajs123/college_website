@@ -42,6 +42,7 @@ class NursingPageManagementTest extends TestCase
         $this->get(route('nursing.index'))
             ->assertOk()
             ->assertSee('Care begins with a calling.')
+            ->assertSee('nursing-hero__stethoscope', false)
             ->assertSee('The Nursing College at SCPS')
             ->assertSee('Knowledge with compassion')
             ->assertSee('Communication builds trust')

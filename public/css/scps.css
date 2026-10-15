@@ -2907,6 +2907,22 @@ h2 {
     letter-spacing: -.04em;
 }
 
+.nursing-hero__stethoscope {
+    display: inline-block;
+    width: .78em;
+    height: .9em;
+    margin-left: .08em;
+    color: var(--nursing-teal-dark);
+    vertical-align: -.12em;
+}
+
+.nursing-hero__stethoscope svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
 .nursing-hero__copy > p {
     max-width: 610px;
     margin: 20px 0 0;
