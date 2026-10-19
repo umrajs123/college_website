@@ -78,7 +78,7 @@
     <div class="developer-contact-card">
         <button class="developer-contact-close" type="button" aria-label="Close contact details" data-close-developer-contact>&times;</button>
         <div class="developer-contact-avatar" aria-hidden="true">
-            <img src="{{ asset('images/adnan-umraj.jpeg') }}" alt="">
+            <img src="{{ asset('images/adnan-umraj.webp') }}" alt="">
         </div>
         <!-- <p class="developer-contact-eyebrow">Your next college website starts here</p> -->
         <h2 id="developerContactTitle">Adnan K Umraj</h2>
