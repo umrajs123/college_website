@@ -7,6 +7,8 @@ const mobileClose = document.querySelector('.mobile-close');
 const searchModal = document.querySelector('.search-modal');
 const searchOpen = document.querySelector('[data-open-search]');
 const searchClose = document.querySelector('.search-modal__close');
+const developerContactModal = document.querySelector('#developerContactModal');
+const developerContactTrigger = document.querySelector('[aria-controls="developerContactModal"]');
 const backToTop = document.querySelector('.back-to-top');
 
 window.addEventListener('load', () => {
@@ -68,10 +70,27 @@ searchModal?.addEventListener('click', (event) => {
     if (event.target === searchModal) closeSearch();
 });
 
+developerContactTrigger?.addEventListener('click', (event) => {
+    event.preventDefault();
+    developerContactModal?.showModal();
+    developerContactModal?.querySelector('[data-close-developer-contact]')?.focus();
+});
+
+developerContactModal?.querySelector('[data-close-developer-contact]')?.addEventListener('click', () => {
+    developerContactModal.close();
+});
+
+developerContactModal?.addEventListener('click', (event) => {
+    if (event.target === developerContactModal) developerContactModal.close();
+});
+
+developerContactModal?.addEventListener('close', () => developerContactTrigger?.focus());
+
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeMenu();
         closeSearch();
+        if (developerContactModal?.open) developerContactModal.close();
     }
 });
 
@@ -317,6 +336,36 @@ document.querySelectorAll('[data-count]').forEach((number) => {
 });
 
 backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const aboutBody = document.querySelector('#aboutBodyText');
+const aboutReadMore = document.querySelector('.about-dynamic-read-more');
+
+if (aboutBody && aboutReadMore) {
+    const updateAboutBodyOverflow = () => {
+        const wasExpanded = aboutReadMore.getAttribute('aria-expanded') === 'true';
+
+        aboutBody.classList.add('is-collapsed');
+        const hasOverflow = aboutBody.scrollHeight > aboutBody.clientHeight + 1;
+        aboutReadMore.hidden = !hasOverflow;
+
+        if (wasExpanded && hasOverflow) {
+            aboutBody.classList.remove('is-collapsed');
+        } else if (!hasOverflow) {
+            aboutReadMore.setAttribute('aria-expanded', 'false');
+            aboutReadMore.textContent = 'Read More ...';
+        }
+    };
+
+    aboutReadMore.addEventListener('click', () => {
+        const isExpanded = aboutReadMore.getAttribute('aria-expanded') === 'true';
+        aboutReadMore.setAttribute('aria-expanded', String(!isExpanded));
+        aboutReadMore.textContent = isExpanded ? 'Read More ...' : 'Read Less';
+        aboutBody.classList.toggle('is-collapsed', isExpanded);
+    });
+
+    updateAboutBodyOverflow();
+    window.addEventListener('resize', updateAboutBodyOverflow);
+}
 
 document.querySelector('.search-modal__box')?.addEventListener('submit', (event) => {
     const input = event.currentTarget.querySelector('input[type="search"]');

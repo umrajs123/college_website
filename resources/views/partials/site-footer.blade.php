@@ -67,9 +67,42 @@
     </div>
     <div class="container relative flex flex-col gap-3 border-t border-white/10 py-5 text-sm font-semibold text-sky-50/65 sm:flex-row sm:items-center sm:justify-between">
         <span>&copy; {{ now()->year }} {{ $settings->site_name }} {{ $settings->site_tagline }}.</span>
-        <a href="{{ $settings->privacy_url ?: '#' }}" class="!text-sky-50/65 transition hover:!text-sky-300">Privacy Policy</a>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a href="#developerContactModal" class="developer-contact-trigger !text-sky-50/65 transition hover:!text-sky-300" aria-haspopup="dialog" aria-controls="developerContactModal">Contact the developer?</a>
+            <!-- <a href="{{ $settings->privacy_url ?: '#' }}" class="!text-sky-50/65 transition hover:!text-sky-300">Privacy Policy</a> -->
+        </div>
     </div>
 </footer>
+
+<dialog id="developerContactModal" class="developer-contact-modal" aria-labelledby="developerContactTitle" aria-describedby="developerContactDescription">
+    <div class="developer-contact-card">
+        <button class="developer-contact-close" type="button" aria-label="Close contact details" data-close-developer-contact>&times;</button>
+        <div class="developer-contact-avatar" aria-hidden="true">
+            <img src="{{ asset('images/adnan-umraj.jpeg') }}" alt="">
+        </div>
+        <!-- <p class="developer-contact-eyebrow">Your next college website starts here</p> -->
+        <h2 id="developerContactTitle">Adnan K Umraj</h2>
+        <p id="developerContactDescription" class="developer-contact-intro">Have a project in mind? Get in touch and let’s build something great for you!</p>
+        <div class="developer-contact-links">
+            <a href="mailto:umrajs123@gmail.com" class="developer-contact-link">
+                <span class="developer-contact-icon" aria-hidden="true">@</span>
+                <span><small>Email</small><strong>umrajs123@gmail.com</strong></span>
+                <span class="developer-contact-arrow" aria-hidden="true">&nearr;</span>
+            </a>
+            <a href="https://wa.me/923433946559" class="developer-contact-link" target="_blank" rel="noopener noreferrer">
+                <span class="developer-contact-icon developer-contact-icon--whatsapp" aria-hidden="true">WA</span>
+                <span><small>WhatsApp</small><strong>+92 343 3946559</strong></span>
+                <span class="developer-contact-arrow" aria-hidden="true">&nearr;</span>
+            </a>
+            <a href="https://github.com/umrajs123" class="developer-contact-link" target="_blank" rel="noopener noreferrer">
+                <span class="developer-contact-icon developer-contact-icon--github" aria-hidden="true">GH</span>
+                <span><small>GitHub</small><strong>github.com/umrajs123</strong></span>
+                <span class="developer-contact-arrow" aria-hidden="true">&nearr;</span>
+            </a>
+        </div>
+        <!-- <p class="developer-contact-note">College website projects welcome</p> -->
+    </div>
+</dialog>
 
 <button class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
 
