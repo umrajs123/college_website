@@ -19,37 +19,10 @@ class AboutSectionController extends Controller
         ]);
     }
 
-    public function create(): View
-    {
-        return view('admin.about.edit', [
-            'section' => new AboutSection([
-                'eyebrow' => 'About SCPS',
-                'badge_value' => '15+',
-                'button_label' => 'Request Information',
-                'button_url' => '#contact',
-                'accent' => 'sky',
-                'sort_order' => (AboutSection::max('sort_order') ?? 0) + 1,
-                'is_active' => true,
-                'features' => [],
-            ]),
-            'isCreate' => true,
-        ]);
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        AboutSection::create($this->validatedSection($request));
-
-        return redirect()
-            ->route('admin.about.index')
-            ->with('status', 'About section created successfully.');
-    }
-
     public function edit(AboutSection $section): View
     {
         return view('admin.about.edit', [
             'section' => $section,
-            'isCreate' => false,
         ]);
     }
 
@@ -75,7 +48,7 @@ class AboutSectionController extends Controller
             ->with('status', 'About section deleted successfully.');
     }
 
-    private function validatedSection(Request $request, ?AboutSection $section = null): array
+    private function validatedSection(Request $request, AboutSection $section): array
     {
         $validated = $request->validate([
             'eyebrow' => ['required', 'string', 'max:80'],
@@ -104,7 +77,7 @@ class AboutSectionController extends Controller
         );
 
         if ($request->hasFile('image')) {
-            if ($section?->image_path && ! str_starts_with($section->image_path, 'http')) {
+            if ($section->image_path && ! str_starts_with($section->image_path, 'http')) {
                 Storage::disk('public')->delete($section->image_path);
             }
 

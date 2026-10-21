@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\NursingPageSectionController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\StatCounterController;
 use App\Http\Controllers\Admin\StudentVoiceController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
@@ -31,6 +32,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::get('/', HomeController::class)->name('home');
+Route::get('/about', AboutController::class)->name('about.show');
 Route::get('/search', SearchController::class)->name('search.index');
 Route::get('/programs/{slug}', [ProgramController::class, 'show'])->name('programs.show');
 Route::get('/nursing', NursingController::class)->name('nursing.index');
@@ -140,11 +142,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     // 11. About: homepage about section content.
     Route::get('/about', [AboutSectionController::class, 'index'])->name('about.index');
-    Route::get('/about/create', [AboutSectionController::class, 'create'])->name('about.create');
-    Route::post('/about', [AboutSectionController::class, 'store'])->name('about.store');
-    Route::get('/about/{section}/edit', [AboutSectionController::class, 'edit'])->name('about.edit');
-    Route::put('/about/{section}', [AboutSectionController::class, 'update'])->name('about.update');
-    Route::delete('/about/{section}', [AboutSectionController::class, 'destroy'])->name('about.destroy');
+    Route::get('/about/{section}/edit', [AboutSectionController::class, 'edit'])->whereNumber('section')->name('about.edit');
+    Route::put('/about/{section}', [AboutSectionController::class, 'update'])->whereNumber('section')->name('about.update');
+    Route::delete('/about/{section}', [AboutSectionController::class, 'destroy'])->whereNumber('section')->name('about.destroy');
 
     // 12. Campus Life: student experience content block.
     Route::get('/campus-life', [CampusLifeSectionController::class, 'edit'])->name('campus-life.edit');

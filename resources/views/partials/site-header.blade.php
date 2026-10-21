@@ -41,14 +41,14 @@
                     </a>
                 </li>
                 <li class="group relative">
-                    <a href="{{ $homeUrl }}#about" class="relative inline-flex items-center gap-2 py-8 text-sm font-black uppercase tracking-wide transition hover:!text-sky-500 group-hover:!text-sky-500">
+                    <a href="{{ route('about.show') }}" class="relative inline-flex items-center gap-2 py-8 text-sm font-black uppercase tracking-wide transition hover:!text-sky-500 group-hover:!text-sky-500">
                         About
                         <span class="transition group-hover:hidden">+</span>
                         <span class="hidden text-sky-500 group-hover:inline">-</span>
                         <span class="absolute inset-x-0 bottom-6 h-0.5 scale-x-0 bg-sky-500 transition group-hover:scale-x-100"></span>
                     </a>
                     <div class="invisible absolute left-0 top-full w-64 translate-y-3 rounded-b-lg border-t-2 border-sky-500 bg-white p-3 opacity-0 shadow-[0_24px_60px_rgba(8,35,68,0.16)] transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                        <a href="{{ $homeUrl }}#about" class="block rounded px-4 py-3 text-sm font-bold !text-slate-700 transition hover:bg-sky-50 hover:!text-sky-600">College Overview</a>
+                        <a href="{{ route('about.show') }}" class="block rounded px-4 py-3 text-sm font-bold !text-slate-700 transition hover:bg-sky-50 hover:!text-sky-600">College Overview</a>
                         <a href="{{ $homeUrl }}#stats" class="block rounded px-4 py-3 text-sm font-bold !text-slate-700 transition hover:bg-sky-50 hover:!text-sky-600">Mission & Recognition</a>
                         <a href="{{ $homeUrl }}#campus" class="block rounded px-4 py-3 text-sm font-bold !text-slate-700 transition hover:bg-sky-50 hover:!text-sky-600">Campus Life</a>
                     </div>
@@ -124,7 +124,7 @@
             <button class="mobile-close" type="button" aria-label="Close menu">x</button>
         </div>
         <a href="{{ $homeUrl }}" class="{{ $isHome ? 'mobile-active' : '' }}">Home</a>
-        <a href="{{ $homeUrl }}#about">About</a>
+        <a href="{{ route('about.show') }}">About</a>
         <a href="{{ $homeUrl }}#programs" class="{{ $isPrograms ? 'mobile-active' : '' }}">Programs</a>
         <a href="{{ route('nursing.index') }}" class="{{ $isNursing ? 'mobile-active' : '' }}">Nursing</a>
         <a href="{{ route('faculty.index') }}" class="{{ $isFaculty ? 'mobile-active' : '' }}">Faculty</a>

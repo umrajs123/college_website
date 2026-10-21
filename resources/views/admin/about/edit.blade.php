@@ -1,29 +1,26 @@
 @extends('admin.layouts.app')
 
 @php
-    $isCreate = $isCreate ?? false;
     $features = old('feature_text')
         ? collect(old('feature_text'))->map(fn ($text, $index) => ['text' => $text, 'accent' => old('feature_accent.'.$index, 'sky')])->values()->all()
         : ($section->features ?: []);
 @endphp
 
-@section('title', $isCreate ? 'Add About Block' : 'Edit About Block')
+@section('title', 'Edit About Us')
 @section('eyebrow', 'Homepage Content')
-@section('page_title', $isCreate ? 'Add About Block' : 'Edit About Block')
+@section('page_title', 'Edit About Us')
 
 @section('content')
-    <form class="admin-form-shell" method="POST" enctype="multipart/form-data" action="{{ $isCreate ? route('admin.about.store') : route('admin.about.update', $section) }}">
+    <form class="admin-form-shell" method="POST" enctype="multipart/form-data" action="{{ route('admin.about.update', $section) }}">
         @csrf
-        @unless($isCreate)
-            @method('PUT')
-        @endunless
+        @method('PUT')
 
         <section class="admin-form-card">
             <div class="admin-card-head">
                 <div>
                     <span class="admin-kicker">About Details</span>
-                    <h2>{{ $isCreate ? 'New About Section' : 'About Content' }}</h2>
-                    <p>{{ $isCreate ? 'Add the main story block for the homepage.' : 'Changes update the homepage About section after saving.' }}</p>
+                    <h2>About Us Content</h2>
+                    <p>Changes update the homepage preview and dedicated About Us page after saving.</p>
                 </div>
             </div>
 
@@ -51,8 +48,8 @@
                 </label>
 
                 <label class="span-2">
-                    Body Text
-                    <textarea name="body" rows="5" placeholder="Write the main About section paragraph.">{{ old('body', $section->body) }}</textarea>
+                    Full About Us Text
+                    <textarea name="body" rows="8" placeholder="Write the complete college story. Use blank lines to separate paragraphs.">{{ old('body', $section->body) }}</textarea>
                     @error('body') <small class="field-error">{{ $message }}</small> @enderror
                 </label>
 
@@ -139,7 +136,7 @@
             <p>{{ old('body', $section->body) ?: 'Add concise About text so the homepage section feels complete and credible.' }}</p>
             <div class="admin-form-actions">
                 <a href="{{ route('admin.about.index') }}">Cancel</a>
-                <button type="submit">{{ $isCreate ? 'Create About Block' : 'Save Changes' }}</button>
+                <button type="submit">Save Changes</button>
             </div>
         </aside>
     </form>

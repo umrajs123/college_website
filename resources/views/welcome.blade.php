@@ -194,8 +194,8 @@
                         </span>
                         <h2 class="about-dynamic-title mb-3 max-w-2xl font-extrabold leading-tight text-slate-950">{{ $aboutSection->heading }}</h2>
                         @if($aboutSection->body)
-                            <p id="aboutBodyText" class="about-dynamic-body mb-2 max-w-2xl text-[15px] leading-7 text-slate-600">{{ $aboutSection->body }}</p>
-                            <button class="about-dynamic-read-more mb-4" type="button" aria-controls="aboutBodyText" aria-expanded="false" hidden>Read More ...</button>
+                            <p id="aboutBodyText" class="about-dynamic-body is-collapsed mb-2 max-w-2xl text-[15px] leading-7 text-slate-600">{{ $aboutSection->body }}</p>
+                            <a class="about-dynamic-read-more mb-4" href="{{ route('about.show') }}" aria-label="Read the complete About Us story" hidden>Read More ...</a>
                         @endif
 
                         @if(! empty($aboutSection->features))
