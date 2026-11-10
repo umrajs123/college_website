@@ -368,7 +368,7 @@
                                 </div>
                                 <div class="p-6">
                                     <h3 class="text-2xl font-black text-slate-950">{{ $member->name }}</h3>
-                                    <p class="mt-2 text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">{{ $member->designation }}</p>
+                                    <p class="mt-2 text-sm font-semibold tracking-normal text-slate-500">{{ preg_replace('/\s*\/\s*/', '/ ', \Illuminate\Support\Str::title(mb_strtolower($member->designation))) }}</p>
                                     <span class="faculty-accent-link mt-5 inline-flex text-sm font-black uppercase tracking-wide">View Profile -&gt;</span>
                                 </div>
                             </a>

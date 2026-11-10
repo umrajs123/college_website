@@ -49,7 +49,7 @@
                             </div>
                             <div class="p-4">
                                 <strong class="faculty-listing-name block truncate text-slate-950">{{ $member->name }}</strong>
-                                <p class="mt-1.5 text-[10px] font-black uppercase tracking-[0.13em] text-slate-500">{{ $member->designation }}</p>
+                                <p class="mt-1.5 text-[10px] font-black tracking-normal text-slate-500">{{ preg_replace('/\s*\/\s*/', '/ ', \Illuminate\Support\Str::title(mb_strtolower($member->designation))) }}</p>
                                 <p class="mt-2.5 text-[13px] leading-5 text-slate-600">{{ $member->summary }}</p>
                                 <span class="faculty-accent-link mt-3 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-wide">
                                     View Profile
