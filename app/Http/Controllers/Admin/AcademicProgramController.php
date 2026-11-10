@@ -67,7 +67,7 @@ class AcademicProgramController extends Controller
             ->with('status', 'Academic program deleted successfully.');
     }
 
-    private function validatedProgram(Request $request, ?AcademicProgram $program = null): array
+    public function validatedProgram(Request $request, ?AcademicProgram $program = null): array
     {
         $request->merge([
             'slug' => Str::slug($request->input('slug') ?: $request->input('title')),

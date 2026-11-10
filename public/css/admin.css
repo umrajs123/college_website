@@ -2425,7 +2425,559 @@ select {
     }
 }
 
+.admissions-popup-dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 24px;
+    margin-top: 18px;
+    border: 1px solid #b9e8f8;
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 88% 15%, rgba(45, 212, 191, .15), transparent 26%),
+        linear-gradient(115deg, #f0faff, #ffffff 66%);
+    box-shadow: 0 18px 48px rgba(8, 35, 68, .06);
+    color: #0f172a;
+    padding: 24px 28px;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.admissions-popup-dashboard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 54px rgba(8, 35, 68, .1);
+}
+
+.admissions-popup-dashboard h2 {
+    margin: 7px 0 0;
+    color: #062b4f;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.admissions-popup-dashboard p {
+    max-width: 680px;
+    margin: 6px 0 0;
+    color: #64748b;
+    line-height: 1.65;
+}
+
+.admissions-popup-dashboard__action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 13px;
+}
+
+.admissions-popup-dashboard__action > strong {
+    color: #0876b5;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.admissions-popup-admin-preview__visual {
+    position: relative;
+    display: grid;
+    height: 150px;
+    overflow: hidden;
+    place-items: center;
+    margin: 14px 0 18px;
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 72% 25%, rgba(80, 222, 222, .4), transparent 27%),
+        linear-gradient(145deg, #0d5881, #062b4f 60%, #031d37);
+}
+
+.admissions-popup-admin-preview__visual img:not(.admissions-popup-admin-preview__logo) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border: 0;
+    border-radius: inherit;
+    object-fit: cover;
+    opacity: .6;
+}
+
+.admissions-popup-admin-preview__visual .admissions-popup-admin-preview__logo {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 76px;
+    height: 76px;
+    margin: 0;
+    place-items: center;
+    border: 5px solid #fff;
+    border-radius: 22px;
+    background: #fff;
+    object-fit: contain;
+    opacity: 1;
+    box-shadow: 0 14px 30px rgba(0, 13, 30, .24);
+}
+
+.admissions-popup-admin-preview__status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 7px 11px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.admissions-popup-admin-preview__status.is-active {
+    background: #ccfbf1;
+    color: #0f766e;
+}
+
+.admissions-popup-admin-preview__status.is-inactive {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+.admissions-popup-admin-preview__session {
+    display: block;
+    margin-top: 15px;
+    color: #0876b5;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.admissions-popup-admin-preview__programs-label {
+    display: block;
+    margin-top: 16px;
+    color: #58748b;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.admissions-popup-admin-preview__programs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.admissions-popup-admin-preview__programs span {
+    border: 1px solid #dbeafe;
+    border-radius: 999px;
+    background: #f0faff;
+    color: #245270;
+    padding: 6px 9px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.admissions-popup-admin-preview h3 {
+    margin-top: 8px;
+    color: #062b4f;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+.admissions-popup-admin-preview__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 18px;
+    border-radius: 12px;
+    background: linear-gradient(110deg, #078cd1, #17b7cd);
+    box-shadow: 0 12px 24px rgba(8, 145, 196, .2);
+    color: #fff;
+    padding: 14px 17px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.admissions-popup-status-fieldset {
+    min-width: 0;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.admissions-popup-status-fieldset legend {
+    margin-bottom: 9px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.admissions-popup-status-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.admin-form-grid .admissions-popup-status-option {
+    display: flex;
+    min-height: 78px;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid #dbeafe;
+    border-radius: 15px;
+    background: #f8fbff;
+    padding: 15px;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.admissions-popup-status-option:has(input:checked) {
+    border-color: #38bdf8;
+    background: #effaff;
+    box-shadow: 0 0 0 3px rgba(29, 161, 242, .1);
+}
+
+.admin-form-grid .admissions-popup-status-option input {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    margin: 2px 0 0;
+    accent-color: #0ea5e9;
+}
+
+.admissions-popup-status-option strong,
+.admissions-popup-status-option small {
+    display: block;
+}
+
+.admissions-popup-status-option strong {
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.admissions-popup-status-option small {
+    margin-top: 5px;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.admin-dark .admissions-popup-dashboard {
+    border-color: rgba(125, 211, 252, .18);
+    background: linear-gradient(115deg, rgba(8, 35, 68, .92), rgba(15, 23, 42, .94));
+    color: #e2e8f0;
+}
+
+.admin-dark .admissions-popup-dashboard h2,
+.admin-dark .admissions-popup-admin-preview h3 {
+    color: #e0f2fe;
+}
+
+.admissions-program-manager {
+    margin-top: 24px;
+}
+
+.admissions-program-manager__count {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #bae6fd;
+    border-radius: 999px;
+    background: #effaff;
+    color: #0369a1;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.admissions-program-create {
+    margin-bottom: 20px;
+    border: 1px solid #cfe7f3;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #f8fcff, #f0faff);
+    padding: 20px;
+}
+
+.admissions-program-create__heading,
+.admissions-program-item__heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admissions-program-create__heading {
+    margin-bottom: 18px;
+}
+
+.admissions-program-create__icon,
+.admissions-program-item__icon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid #c7eafa;
+    border-radius: 13px;
+    background: #e0f5ff;
+    color: #0781ba;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.admissions-program-create__heading h3,
+.admissions-program-item__heading h3 {
+    margin: 0;
+    color: #123b5a;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.admissions-program-create__heading p {
+    margin: 4px 0 0;
+    color: #71879a;
+    font-size: 12px;
+}
+
+.admissions-program-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.admissions-program-form-grid label {
+    display: grid;
+    min-width: 0;
+    gap: 7px;
+    color: #36546c;
+    font-size: 12px;
+    font-weight: 850;
+}
+
+.admissions-program-form-grid input:not([type="checkbox"]),
+.admissions-program-form-grid textarea,
+.admissions-program-form-grid select {
+    width: 100%;
+    min-height: 43px;
+    border: 1px solid #d5e4ef;
+    border-radius: 10px;
+    background: #fff;
+    color: #173c59;
+    padding: 10px 12px;
+    font: inherit;
+}
+
+.admissions-program-form-grid textarea {
+    min-height: 72px;
+    resize: vertical;
+}
+
+.admissions-program-form-grid__description {
+    grid-column: span 2;
+}
+
+.admissions-program-active-toggle {
+    display: flex !important;
+    align-items: center;
+    align-self: center;
+    gap: 9px !important;
+    min-height: 43px;
+    border: 1px solid #dcebf3;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .76);
+    padding: 10px 12px;
+}
+
+.admissions-program-active-toggle input {
+    width: 16px;
+    height: 16px;
+    accent-color: #0789c5;
+}
+
+.admissions-program-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.admissions-program-form-actions button,
+.admissions-program-item__delete {
+    min-height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0b4da2, #1da1f2);
+    color: #fff;
+    padding: 0 15px;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.admissions-program-list {
+    display: grid;
+    gap: 14px;
+}
+
+.admissions-program-item {
+    border: 1px solid #dbe8f0;
+    border-radius: 16px;
+    background: #fff;
+    padding: 18px;
+}
+
+.admissions-program-item__heading {
+    margin-bottom: 16px;
+}
+
+.admissions-program-item__heading > div {
+    display: grid;
+    flex: 1 1 auto;
+    justify-items: start;
+    gap: 6px;
+}
+
+.admissions-program-item__heading .admissions-popup-admin-preview__status {
+    padding: 5px 8px;
+    font-size: 9px;
+}
+
+.admissions-program-item__delete {
+    border: 1px solid #fecaca;
+    background: #fff1f2;
+    color: #be123c;
+}
+
+.admissions-program-item__delete:hover {
+    background: #ffe4e6;
+}
+
+.admissions-program-item__form {
+    border-top: 1px solid #edf2f7;
+    padding-top: 16px;
+}
+
+.admin-dark .admissions-program-manager__count {
+    border-color: rgba(125, 211, 252, .2);
+    background: rgba(8, 35, 68, .68);
+    color: #bae6fd;
+}
+
+.admin-dark .admissions-program-create,
+.admin-dark .admissions-program-item {
+    border-color: rgba(125, 211, 252, .16);
+    background: rgba(9, 28, 48, .82);
+}
+
+.admin-dark .admissions-program-create__heading h3,
+.admin-dark .admissions-program-item__heading h3 {
+    color: #e0f2fe;
+}
+
+.admin-dark .admissions-program-create__heading p,
+.admin-dark .admissions-program-form-grid label {
+    color: #a6b8ca;
+}
+
+.admin-dark .admissions-program-form-grid input:not([type="checkbox"]),
+.admin-dark .admissions-program-form-grid textarea,
+.admin-dark .admissions-program-form-grid select {
+    border-color: rgba(125, 211, 252, .2);
+    background: #0b1c2d;
+    color: #e0f2fe;
+}
+
+.admin-dark .admissions-program-active-toggle {
+    border-color: rgba(125, 211, 252, .16);
+    background: rgba(8, 35, 68, .4);
+}
+
+.admin-dark .admissions-program-item__form {
+    border-color: rgba(125, 211, 252, .14);
+}
+
+@media (max-width: 800px) {
+    .admissions-program-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admissions-program-form-grid__description {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 560px) {
+    .admissions-program-create,
+    .admissions-program-item {
+        padding: 14px;
+    }
+
+    .admissions-program-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .admissions-program-form-grid__description {
+        grid-column: auto;
+    }
+
+    .admissions-program-manager > .admin-card-head {
+        flex-direction: column;
+    }
+}
+
+.admin-dark .admissions-popup-dashboard p {
+    color: #a6b8ca;
+}
+
+.admin-dark .admissions-popup-admin-preview__session {
+    color: #7dd3fc;
+}
+
+.admin-dark .admissions-popup-admin-preview__programs-label {
+    color: #a6b8ca;
+}
+
+.admin-dark .admissions-popup-admin-preview__programs span {
+    border-color: rgba(125, 211, 252, .18);
+    background: rgba(8, 35, 68, .68);
+    color: #c9e8f7;
+}
+
+.admin-dark .admissions-popup-status-fieldset legend,
+.admin-dark .admissions-popup-status-option strong {
+    color: #e2e8f0;
+}
+
+.admin-dark .admin-form-grid .admissions-popup-status-option {
+    border-color: rgba(125, 211, 252, .16);
+    background: rgba(8, 35, 68, .54);
+}
+
+.admin-dark .admissions-popup-status-option:has(input:checked) {
+    border-color: #38bdf8;
+    background: rgba(8, 145, 196, .16);
+}
+
+.admin-dark .admissions-popup-status-option small {
+    color: #a6b8ca;
+}
+
 @media (max-width: 640px) {
+    .admissions-popup-dashboard {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .admissions-popup-dashboard__action {
+        align-items: flex-start;
+    }
+
+    .admissions-popup-status-options {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .admin-main {
         padding: 16px;
     }

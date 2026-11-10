@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AboutSectionController;
 use App\Http\Controllers\Admin\AcademicFacilityController;
 use App\Http\Controllers\Admin\AcademicProgramController;
+use App\Http\Controllers\Admin\AdmissionsPopupController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CampusEventController;
 use App\Http\Controllers\Admin\CampusLifeSectionController;
@@ -15,7 +17,6 @@ use App\Http\Controllers\Admin\NursingPageSectionController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\StatCounterController;
 use App\Http\Controllers\Admin\StudentVoiceController;
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\HomeController;
@@ -150,11 +151,18 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/campus-life', [CampusLifeSectionController::class, 'edit'])->name('campus-life.edit');
     Route::put('/campus-life', [CampusLifeSectionController::class, 'update'])->name('campus-life.update');
 
-    // 13. Site Settings: logo, contact info, admissions link, and footer values.
+    // Admissions popup: public admissions announcement and call to action.
+    Route::get('/admissions-popup', [AdmissionsPopupController::class, 'edit'])->name('admissions-popup.edit');
+    Route::put('/admissions-popup', [AdmissionsPopupController::class, 'update'])->name('admissions-popup.update');
+    Route::post('/admissions-popup/programs', [AdmissionsPopupController::class, 'storeProgram'])->name('admissions-popup.programs.store');
+    Route::put('/admissions-popup/programs/{program}', [AdmissionsPopupController::class, 'updateProgram'])->name('admissions-popup.programs.update');
+    Route::delete('/admissions-popup/programs/{program}', [AdmissionsPopupController::class, 'destroyProgram'])->name('admissions-popup.programs.destroy');
+
+    // 15. Site Settings: logo, contact info, admissions link, and footer values.
     Route::get('/settings', [SiteSettingController::class, 'edit'])->name('settings.edit');
     Route::put('/settings', [SiteSettingController::class, 'update'])->name('settings.update');
 
-    // 14. Security: admin password and account access.
+    // 16. Security: admin password and account access.
     Route::get('/security', [AuthController::class, 'editPassword'])->name('security.edit');
     Route::put('/security', [AuthController::class, 'updatePassword'])->name('security.update');
 

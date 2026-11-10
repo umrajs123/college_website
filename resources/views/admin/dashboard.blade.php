@@ -79,6 +79,20 @@
         </div>
     </section>
 
+    <a class="admissions-popup-dashboard" href="{{ route('admin.admissions-popup.edit') }}">
+        <div>
+            <span class="admin-kicker">Featured Website Announcement</span>
+            <h2>Admissions Popup</h2>
+            <p>Edit the message visitors see when they arrive, update the Apply Now link, or switch the popup on and off.</p>
+        </div>
+        <div class="admissions-popup-dashboard__action">
+            <span class="admissions-popup-admin-preview__status {{ $siteSettings->admissions_popup_is_active ? 'is-active' : 'is-inactive' }}">
+                {{ $siteSettings->admissions_popup_is_active ? 'Active' : 'Inactive' }}
+            </span>
+            <strong>Manage popup <span aria-hidden="true">&rarr;</span></strong>
+        </div>
+    </a>
+
     <section class="admin-stats">
         <article>
             <span>{{ $heroSlideCount }}</span>

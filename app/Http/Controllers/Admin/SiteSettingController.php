@@ -20,7 +20,7 @@ class SiteSettingController extends Controller
 
     public function update(Request $request): RedirectResponse
     {
-        $settings = SiteSetting::query()->first() ?? new SiteSetting();
+        $settings = SiteSetting::query()->first() ?? new SiteSetting(SiteSetting::defaults());
         $validated = $request->validate([
             'site_name' => ['required', 'string', 'max:120'],
             'site_tagline' => ['nullable', 'string', 'max:160'],

@@ -21,7 +21,22 @@ class SiteSetting extends Model
         'linkedin_url',
         'youtube_url',
         'privacy_url',
+        'admissions_popup_is_active',
+        'admissions_popup_eyebrow',
+        'admissions_popup_heading',
+        'admissions_popup_body',
+        'admissions_popup_button_label',
+        'admissions_popup_button_url',
+        'admissions_popup_image_path',
+        'admissions_popup_session',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'admissions_popup_is_active' => 'boolean',
+        ];
+    }
 
     public static function current(): self
     {
@@ -48,6 +63,14 @@ class SiteSetting extends Model
             'linkedin_url' => null,
             'youtube_url' => null,
             'privacy_url' => '#',
+            'admissions_popup_is_active' => true,
+            'admissions_popup_eyebrow' => 'Admissions Open',
+            'admissions_popup_heading' => 'Your future in pharmacy starts here.',
+            'admissions_popup_body' => 'Build the knowledge, practical skills, and confidence to make a difference in healthcare. Take the next step with Swat College of Pharmaceutical Sciences.',
+            'admissions_popup_button_label' => 'Apply Now',
+            'admissions_popup_button_url' => null,
+            'admissions_popup_image_path' => null,
+            'admissions_popup_session' => '2026-27',
         ];
     }
 
@@ -73,6 +96,13 @@ class SiteSetting extends Model
     public function emailHref(): ?string
     {
         return $this->email ? 'mailto:'.$this->email : null;
+    }
+
+    public function admissionsPopupImageUrl(): ?string
+    {
+        return $this->admissions_popup_image_path
+            ? $this->assetUrl($this->admissions_popup_image_path)
+            : null;
     }
 
     private function assetUrl(?string $path): string

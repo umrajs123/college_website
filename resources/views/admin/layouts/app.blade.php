@@ -34,6 +34,7 @@
             ['label' => 'Facilities', 'hint' => 'Labs and academic facilities', 'url' => route('admin.facilities.index'), 'code' => 'LB'],
             ['label' => 'About', 'hint' => 'Homepage about section', 'url' => route('admin.about.index'), 'code' => 'AB'],
             ['label' => 'Campus Life', 'hint' => 'Student experience homepage block', 'url' => route('admin.campus-life.edit'), 'code' => 'CL'],
+            ['label' => 'Admissions Popup', 'hint' => 'Admissions announcement and apply button', 'url' => route('admin.admissions-popup.edit'), 'code' => 'AP'],
             ['label' => 'Site Settings', 'hint' => 'Logo, contact info, admissions link', 'url' => route('admin.settings.edit'), 'code' => 'SS'],
             ['label' => 'Security', 'hint' => 'Admin password and account access', 'url' => route('admin.security.edit'), 'code' => 'SC'],
         ];
@@ -108,12 +109,16 @@
                 <span>13</span>
                 Campus Life
             </a>
-            <a class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" href="{{ route('admin.settings.edit') }}">
+            <a class="{{ request()->routeIs('admin.admissions-popup.*') ? 'active' : '' }}" href="{{ route('admin.admissions-popup.edit') }}">
                 <span>14</span>
+                Admissions Popup
+            </a>
+            <a class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}" href="{{ route('admin.settings.edit') }}">
+                <span>15</span>
                 Site Settings
             </a>
             <a class="{{ request()->routeIs('admin.security.*') ? 'active' : '' }}" href="{{ route('admin.security.edit') }}">
-                <span>15</span>
+                <span>16</span>
                 Security
             </a>
         </nav>
