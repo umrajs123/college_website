@@ -2,6 +2,7 @@
     $homeUrl = url('/');
     $settings = $siteSettings ?? \App\Models\SiteSetting::current();
     $admissionsUrl = $settings->admissions_url ?: 'https://scps.digitalcampuspro.com/admin/login';
+    $contactEmail = $settings->email ?: \App\Models\SiteSetting::defaults()['email'];
 @endphp
 
 <footer id="contact" class="relative overflow-hidden bg-[#071a2e] text-white">
@@ -55,14 +56,12 @@
                 @if($settings->phone)
                     <a href="{{ $settings->phoneHref() }}" class="!text-sky-50/78 transition hover:!text-sky-300">{{ $settings->phone }}</a>
                 @endif
-                @if($settings->email)
-                    <a href="{{ $settings->emailHref() }}" class="!text-sky-50/78 transition hover:!text-sky-300">{{ $settings->email }}</a>
-                @endif
             </div>
-            <form class="mt-6 flex overflow-hidden rounded-lg border border-white/10 bg-white/[0.08] p-1">
-                <input class="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm font-semibold text-white outline-none placeholder:text-sky-100/50" type="email" placeholder="Email address" aria-label="Email address">
-                <button class="rounded-md bg-sky-500 px-5 text-sm font-black uppercase tracking-wide text-white transition hover:bg-sky-400" type="submit">Join</button>
-            </form>
+            <a class="mt-6 inline-flex min-h-11 items-center gap-2 rounded-lg bg-sky-500 px-4 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-sky-400"
+                href="mailto:{{ $contactEmail }}?subject={{ rawurlencode('College website inquiry') }}">
+                Email the college
+                <span aria-hidden="true">&rarr;</span>
+            </a>
         </div>
     </div>
     <div class="container relative flex flex-col gap-3 border-t border-white/10 py-5 text-sm font-semibold text-sky-50/65 sm:flex-row sm:items-center sm:justify-between">
