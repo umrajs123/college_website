@@ -15,6 +15,7 @@
 </head>
 <body>
     @include('partials.site-header')
+    @include('partials.admissions-popup', ['settings' => $siteSettings])
 
     <main>
         <section class="scps-active-hero relative overflow-hidden bg-slate-950 pb-8 text-white sm:pb-10 lg:pb-12" aria-label="Featured college highlights">

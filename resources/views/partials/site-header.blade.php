@@ -145,5 +145,3 @@
         </div>
     </form>
 </div>
-
-@include('partials.admissions-popup')

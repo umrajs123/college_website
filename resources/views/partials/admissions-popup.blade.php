@@ -84,7 +84,7 @@
     <script>
         (() => {
             const popup = document.querySelector('[data-admissions-popup]');
-            if (!popup) return;
+            if (!popup || window.location.hash) return;
 
             const dialog = popup.querySelector('[role="dialog"]');
             const closeButtons = popup.querySelectorAll('[data-admissions-popup-close]');

@@ -116,6 +116,26 @@ class AdmissionsPopupTest extends TestCase
             ->assertDontSee('Hidden admissions notice');
     }
 
+    public function test_active_popup_only_appears_on_the_homepage(): void
+    {
+        SiteSetting::query()->create([
+            ...SiteSetting::defaults(),
+            'admissions_popup_is_active' => true,
+            'admissions_popup_heading' => 'Homepage-only admissions notice',
+        ]);
+
+        $this->get(route('home'))
+            ->assertOk()
+            ->assertSee('data-admissions-popup', false)
+            ->assertSee('Homepage-only admissions notice')
+            ->assertSee('window.location.hash', false);
+
+        $this->get(route('events.index'))
+            ->assertOk()
+            ->assertDontSee('data-admissions-popup', false)
+            ->assertDontSee('Homepage-only admissions notice');
+    }
+
     public function test_admin_can_create_update_publish_and_delete_admission_programs_from_popup_page(): void
     {
         $admin = User::factory()->create();
